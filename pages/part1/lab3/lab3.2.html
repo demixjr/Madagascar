@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Опитування студентів</title>
+</head>
+<body>
+<script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+  <h1>Опитування студентів</h1>
+  <h2>Тема: Навчання та студентське життя</h2>
+  <p>Будь ласка, заповніть форму. Усі відповіді анонімні.</p>
+
+  <hr>
+
+  <form action="#" method="post">
+
+    <fieldset>
+      <legend>Особисті дані</legend>
+
+      <label for="fname">Ім'я:</label>
+      <input type="text" id="fname" name="first_name" required>
+      &nbsp;
+      <label for="lname">Прізвище:</label>
+      <input type="text" id="lname" name="last_name" required>
+
+      <br><br>
+
+      <label for="email">E-mail:</label><br>
+      <input type="email" id="email" name="email" placeholder="student@example.com" required>
+
+      <br><br>
+
+      <label for="age">Вік:</label><br>
+      <input type="number" id="age" name="age" min="16" max="60" placeholder="e.g., 20">
+
+      <br><br>
+
+      <label for="gender">Стать:</label><br>
+      <select id="gender" name="gender">
+        <option value="">-- оберіть --</option>
+        <option value="male">Чоловіча</option>
+        <option value="female">Жіноча</option>
+        <option value="other">Інше</option>
+      </select>
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Навчання</legend>
+
+      <label for="group">Група / Спеціальність:</label><br>
+      <input type="text" id="group" name="group" placeholder="e.g., КН-21">
+
+      <br><br>
+
+      <label for="year">Рік навчання:</label><br>
+      <select id="year" name="study_year">
+        <option value="">-- оберіть --</option>
+        <option value="1">1 курс</option>
+        <option value="2">2 курс</option>
+        <option value="3">3 курс</option>
+        <option value="4">4 курс</option>
+        <option value="5">5 курс (магістр)</option>
+      </select>
+
+      <br><br>
+
+      <p><strong>Як ви навчаєтесь? *</strong></p>
+      <input type="radio" id="full_time" name="study_mode" value="full_time" required>
+      <label for="full_time">Денна форма</label><br>
+      <input type="radio" id="part_time" name="study_mode" value="part_time">
+      <label for="part_time">Заочна форма</label><br>
+      <input type="radio" id="remote" name="study_mode" value="remote">
+      <label for="remote">Дистанційна форма</label>
+
+      <br><br>
+
+      <label for="avg_grade">Середній бал (1–100):</label><br>
+      <input type="number" id="avg_grade" name="avg_grade" min="1" max="100" placeholder="e.g., 85">
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Оцінка навчального процесу</legend>
+
+      <p><strong>Наскільки ви задоволені навчанням? *</strong></p>
+      <input type="radio" id="sat1" name="satisfaction" value="1" required>
+      <label for="sat1">1 — зовсім не задоволений</label><br>
+      <input type="radio" id="sat2" name="satisfaction" value="2">
+      <label for="sat2">2 — незадоволений</label><br>
+      <input type="radio" id="sat3" name="satisfaction" value="3">
+      <label for="sat3">3 — нейтральне ставлення</label><br>
+      <input type="radio" id="sat4" name="satisfaction" value="4">
+      <label for="sat4">4 — задоволений</label><br>
+      <input type="radio" id="sat5" name="satisfaction" value="5">
+      <label for="sat5">5 — дуже задоволений</label>
+
+      <br><br>
+
+      <p><strong>Що вам подобається у навчанні? (можна обрати декілька)</strong></p>
+      <input type="checkbox" id="prak" name="likes" value="practice">
+      <label for="prak">Практичні завдання</label><br>
+      <input type="checkbox" id="lect" name="likes" value="lectures">
+      <label for="lect">Лекції</label><br>
+      <input type="checkbox" id="team" name="likes" value="teamwork">
+      <label for="team">Командна робота</label><br>
+      <input type="checkbox" id="proj" name="likes" value="projects">
+      <label for="proj">Проєкти</label><br>
+      <input type="checkbox" id="prof" name="likes" value="teachers">
+      <label for="prof">Викладачі</label>
+
+      <br><br>
+
+      <label for="best_subject">Найулюбленіший предмет:</label><br>
+      <input type="text" id="best_subject" name="best_subject" placeholder="e.g., Веб-програмування">
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Студентське життя</legend>
+
+      <p><strong>Чи берете участь у позанавчальних заходах?</strong></p>
+      <input type="radio" id="act_yes" name="activities" value="yes">
+      <label for="act_yes">Так</label>
+      &nbsp;
+      <input type="radio" id="act_no" name="activities" value="no">
+      <label for="act_no">Ні</label>
+
+      <br><br>
+
+      <label for="hobby">Ваші хобі / інтереси:</label><br>
+      <input type="text" id="hobby" name="hobby" placeholder="e.g., спорт, музика, програмування">
+
+      <br><br>
+
+      <label for="work">Посилання на ваше портфоліо або GitHub (якщо є):</label><br>
+      <input type="url" id="work" name="portfolio" placeholder="https://github.com/username">
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+      <legend>Ваші побажання</legend>
+
+      <label for="suggestions">Що б ви змінили або покращили у навчальному процесі?</label><br>
+      <textarea id="suggestions" name="suggestions" rows="5" cols="60" placeholder="Введіть ваші пропозиції тут..."></textarea>
+
+      <br><br>
+
+      <label for="date">Дата заповнення:</label><br>
+      <input type="date" id="date" name="survey_date">
+
+    </fieldset>
+
+    <br>
+
+    <input type="submit" value="Надіслати відповіді">
+    &nbsp;
+    <input type="reset" value="Очистити форму">
+
+  </form>
+
+  <hr>
+  <p><small>Дякуємо за участь в опитуванні!</small></p>
+
+</body>
+</html>

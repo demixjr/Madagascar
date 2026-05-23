@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Booking</title>
+</head>
+<body>
+<script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+  <center>
+
+    <table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#3399cc">
+      <tr>
+        <td align="center" valign="middle" height="160">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=160&h=110&fit=crop" width="160" height="110" alt="Hotel Room 1" border="4">
+          &nbsp;
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=160&h=110&fit=crop" width="160" height="110" alt="Hotel Room 2" border="4">
+          &nbsp;
+          <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=160&h=110&fit=crop" width="160" height="110" alt="Resort View" border="4">
+        </td>
+      </tr>
+    </table>
+
+    <table width="600" border="0" cellpadding="5" cellspacing="0" bgcolor="#ffffff">
+      <tr>
+        <td align="center">
+          <h1>Hotel Booking</h1>
+          <p>Special discounts for &quot;&#1055;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1076;&#1083;&#1103; &#1030;&#1085;&#1090;&#1077;&#1088;&#1085;&#1077;&#1090;&quot; students</p>
+          <hr width="560">
+        </td>
+      </tr>
+    </table>
+
+    <table width="600" border="0" cellpadding="10" cellspacing="0" bgcolor="#ffffff">
+      <form action="#" method="post">
+
+        <tr valign="top">
+          <td width="290">
+            <b>Name <font color="red">*</font></b><br><br>
+            <input type="text" name="first_name" size="13" placeholder="First Name">
+            <input type="text" name="last_name" size="13" placeholder="Last Name"><br>
+            <small>&nbsp;First Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name</small>
+          </td>
+          <td width="310">
+            <b>E-mail <font color="red">*</font></b><br><br>
+            <input type="email" name="email" size="36" placeholder="ex: myname@example.com" required><br>
+            <small>example@example.com</small>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+        <tr valign="top">
+          <td>
+            <b>Room Type</b><br><br>
+            <select name="room_type">
+              <option value="">Please Select</option>
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+              <option value="suite">Suite</option>
+              <option value="family">Family</option>
+            </select>
+          </td>
+          <td>
+            <b>Number of Guests <font color="red">*</font></b><br><br>
+            <input type="number" name="guests" size="34" min="1" max="10" placeholder="e.g., 4" required><br>
+            <small>(min 1, max 10)</small>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+        <tr valign="top">
+          <td colspan="2">
+            <b>Arrival Date &amp; Time <font color="red">*</font></b><br><br>
+            <input type="date" name="arrival_date" value="2026-03-21" required>
+            &nbsp;&nbsp;
+            <input type="number" name="arrival_hour" size="3" min="1" max="12" value="12">
+            :
+            <input type="number" name="arrival_min" size="3" min="0" max="59" value="40">
+            &nbsp;
+            <select name="ampm">
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+            <br>
+            <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hour &nbsp; Minutes</small>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+        <tr valign="top">
+          <td colspan="2">
+            <b>Departure Date <font color="red">*</font></b><br><br>
+            <select name="dep_month">
+              <option value="">Please select a month</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+            </select>
+            &nbsp;
+            <select name="dep_day">
+              <option value="">Please select a day</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+              <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+              <option>21</option><option>22</option><option>23</option><option>24</option><option>25</option>
+              <option>26</option><option>27</option><option>28</option><option>29</option><option>30</option>
+              <option>31</option>
+            </select>
+            &nbsp;
+            <select name="dep_year">
+              <option value="">Please select a year</option>
+              <option>2026</option><option>2027</option><option>2028</option>
+            </select>
+            <br>
+            <small>Month &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Day &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Year</small>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+
+        <tr valign="top">
+          <td colspan="2">
+            <b>Free Pickup? <font color="red">*</font></b><br><br>
+            <input type="radio" name="pickup" value="yes" id="p_yes" required>
+            <label for="p_yes">Yes Please! - Pick me up on arrival</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="pickup" value="no" id="p_no">
+            <label for="p_no">No Thanks - I'll make my own way there</label>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+
+        <tr valign="top">
+          <td colspan="2">
+            <input type="text" name="flight_number" size="72" placeholder="Flight Number">
+            <br><br>
+          </td>
+        </tr>
+
+
+        <tr valign="top">
+          <td colspan="2">
+            <b>Meals <font color="red">*</font></b><br><br>
+            <input type="checkbox" name="meals" value="breakfast" id="m1">
+            <label for="m1">breakfast</label><br>
+            <input type="checkbox" name="meals" value="lunch" id="m2">
+            <label for="m2">lunch</label><br>
+            <input type="checkbox" name="meals" value="afternoon_tea" id="m3">
+            <label for="m3">afternoon tea</label><br>
+            <input type="checkbox" name="meals" value="dinner" id="m4">
+            <label for="m4">dinner</label>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+        <tr valign="top">
+          <td colspan="2">
+            <b>Special Requests</b><br><br>
+            <textarea name="special_requests" rows="6" cols="72"></textarea>
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" value="Submit">
+          </td>
+        </tr>
+
+        <tr><td colspan="2">&nbsp;</td></tr>
+
+      </form>
+    </table>
+
+  </center>
+
+</body>
+</html>

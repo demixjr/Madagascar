@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone UA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 0 16px;
+            height: 56px;
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .menu-icon:hover {
+            background-color: #f2f2f2;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 30px;
+            height: 20px;
+            fill: #ff0000;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            margin-left: 4px;
+            letter-spacing: -1px;
+        }
+
+        .search-box {
+            height: 40px;
+            flex: 0 1 600px;
+            display: flex;
+            margin: 5px 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 40px 0 0 40px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            padding: 0 20px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 40px 40px 0;
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-icons button {
+            background: none;
+            border: none;
+            width: 45px;
+            height: 45px;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .header-icons button:hover {
+            background-color: #f2f2f2;
+        }
+
+
+        .container {
+            display: flex;
+            height: calc(100vh - 56px);
+        }
+
+        aside {
+            width: 240px;
+            overflow-y: auto;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f2f2f2;
+        }
+
+        .sidebar-item.active {
+            background-color: #f2f2f2;
+        }
+
+        .sidebar-item span.icon {
+            margin-right: 24px;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar-section-title {
+            display: flex;
+            align-items: center;
+            padding: 12px 12px 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sidebar-section-title::after {
+            content: '›';
+            margin-left: 8px;
+            color: #606060;
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background-color: #e5e5e5;
+            margin: 12px 0;
+        }
+
+        .channel-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 24px;
+        }
+
+        main {
+            flex: 1;
+            padding: 24px;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            background-color: #ccc;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .video-meta {
+            font-size: 14px;
+            color: #606060;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+    <header>
+        <div class="header-left">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <path d="M21 6H3V5h18v1zm0 5H3v1h18v1zm0 5H3v1h18v1z" />
+            </svg>
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 30 21" xmlns="http://w3.org">
+                    <path
+                        d="M11.6667 14.5833L19.2354 10.2083L11.6667 5.83333V14.5833ZM28.525 3.16458C28.7146 3.85 28.8458 4.76875 28.9333 5.93542C29.0354 7.10208 29.0792 8.10833 29.0792 8.98333L29.1667 10.2083C29.1667 13.4021 28.9333 15.75 28.525 17.2521C28.1604 18.5646 27.3146 19.4104 26.0021 19.775C25.3167 19.9646 24.0625 20.0958 22.1375 20.1833C20.2417 20.2854 18.5062 20.3292 16.9021 20.3292L14.5833 20.4167C8.47292 20.4167 4.66667 20.1833 3.16458 19.775C1.85208 19.4104 1.00625 18.5646 0.641667 17.2521C0.452083 16.5667 0.320833 15.6479 0.233333 14.4812C0.13125 13.3146 0.0874999 12.3083 0.0874999 11.4333L0 10.2083C0 7.01458 0.233333 4.66667 0.641667 3.16458C1.00625 1.85208 1.85208 1.00625 3.16458 0.641667C3.85 0.452083 5.10417 0.320833 7.02917 0.233333C8.925 0.13125 10.6604 0.0874999 12.2646 0.0874999L14.5833 0C20.6937 0 24.5 0.233333 26.0021 0.641667C27.3146 1.00625 28.1604 1.85208 28.525 3.16458Z" />
+                </svg>
+                <span class="logo-text">YouTube</span>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Пошук">
+            <button>🔍</button>
+        </div>
+        <div class="header-icons">
+            <button title="Створити">🎥</button>
+            <button title="Сповіщення">🔔</button>
+            <button title="Профіль">👤</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside>
+            <div class="sidebar-item active"><span class="icon">🏠</span> Головна</div>
+            <div class="sidebar-item"><span class="icon">🎬</span> Shorts</div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section-title">Підписки</div>
+            <div class="sidebar-item">
+                <div class="channel-avatar"></div> SDH feuerwerk
+            </div>
+            <div class="sidebar-item">
+                <div class="channel-avatar"></div> Project: Eden's Gar...
+            </div>
+            <div class="sidebar-item">
+                <div class="channel-avatar"></div> Saesong
+            </div>
+            <div class="sidebar-item">
+                <div class="channel-avatar"></div> FREEДОМ
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section-title">Ви</div>
+            <div class="sidebar-item"><span class="icon">👤</span> Мій канал</div>
+            <div class="sidebar-item"><span class="icon">🕒</span> Історія</div>
+            <div class="sidebar-item"><span class="icon">📁</span> Плейлисти</div>
+            <div class="sidebar-item"><span class="icon">⏱️</span> Дивитися пізніше</div>
+            <div class="sidebar-item"><span class="icon">👍</span> Сподобалося</div>
+            <div class="sidebar-item"><span class="icon">📺</span> Ваші відео</div>
+            <div class="sidebar-item"><span class="icon">📥</span> Завантажені</div>
+            <div class="sidebar-item"><span class="icon">▼</span> Розгорнути</div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section-title">Навігатор</div>
+            <div class="sidebar-item"><span class="icon">🎵</span> Музика</div>
+            <div class="sidebar-item"><span class="icon">🍿</span> Фільми</div>
+            <div class="sidebar-item"><span class="icon">🎮</span> Відеоігри</div>
+            <div class="sidebar-item"><span class="icon">▼</span> Розгорнути</div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section-title">Інші можливості</div>
+            <div class="sidebar-item"><span class="icon">📺</span> YouTube Premium</div>
+            <div class="sidebar-item"><span class="icon">🎹</span> YouTube Music</div>
+            <div class="sidebar-item"><span class="icon">👶</span> YouTube Дітям</div>
+
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-item"><span class="icon">🚩</span> Скарги</div>
+        </aside>
+
+        <main>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/7g0APZgE5XE?si=hfh0kuL7IBz5xxgY"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">Karma - 因緣會遇時 | Animated Short Film</div>
+                    <div class="video-meta">Yuki Nakazawa<br>395 тис переглядів • 10 місяців тому</div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/Kvceyq9o0rY?si=-xFTWdonlhNBP8gf"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">白雪 (White Snow) - Eve MV</div>
+                    <div class="video-meta">Eve<br>8,3 млн переглядів • 3 роки тому</div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/oZVn3yKwLug?si=CV0LDk0GFP6QFlue"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-title">MILGRAM - カズイ「カモフラージュ」第三審MV</div>
+                    <div class="video-meta">MILGRAM -ミルグラム<br>1,3 млн переглядів • 1 місяць тому</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

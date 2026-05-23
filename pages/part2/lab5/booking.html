@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HolidayTime</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="booking-page">
+    <header class="header">
+    <div class="logo">
+         <img src="images/logo.png" alt="HolidayTime logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="lab5.2.html">ГОЛОВНА</a></li>
+            <li><a href="about.html">ПРО НАС</a></li>
+            <li><a href="booking.html">ЗАБРОНЮВАТИ</a></li>
+            <li><a href="contacts.html">КОНТАКТИ</a></li>
+            <li><a href="account.html">ОСОБИСТИЙ<br>КАБІНЕТ</a></li>
+        </ul>
+        <img src="images/language.svg" alt="Language icon" class="icon">
+        <select class="language">
+                    <option value="en">EN</option>
+                    <option value="ua">UA</option>
+                    <option value="fr">FR</option>
+        </select>
+    </nav>
+    </header>
+
+    <main class="booking">
+        <p class="main-title">Забронювати будиночок</p>
+        <select class="location" name="location">
+            <option value="" hidden>Оберіть місце</option>
+            <option value="bakota">Бакота</option>
+            <option value="karpaty">Карпати</option>
+            <option value="kyiv">Київ</option>
+            <option value="odesa">Одеська область</option>
+        </select>
+
+        
+        <section class="location-card bakota">
+            <img src="images/image5.png" alt="Bakota" сlass="location-image">
+            <div class="location-description">
+                <img src="images/star.svg" alt="star icon" class="star-icon">
+                <h2>Незвідана Бакота </h2>
+                <hr>
+                <p>У Хмельницькій області розташований загублений край -
+                Бакота. Мальовничий каньйон з давньою історією захоплює
+                своїми просторами та незвичною атмосферою. Бджільництво,
+                свіжий мед із польових трав, дотик до природи.
+                </p>
+                <a href="" class="details-link">Детальніше</a>
+            </div>
+        </section>
+
+        <section class="location-card carpathians">
+            <img src="images/image6.png" alt="Carpathians" class="location-image">
+            <div class="location-description">
+                <img src="images/star.svg" alt="star icon" class="star-icon">
+                <h2>Полонини Карпат</h2>
+                <hr>
+                <p>Полонини Карпат, у селі Орів посеред гір
+                    розташувався затишний куточок для незабутніх
+                    вражень. Справжні українські гори, власноручне
+                    сироваріння на полонині, водоспади та
+                    вікові дерева чекають на Вас.
+                </p>
+                <a href="/details.html" class="details-link">Детальніше</a>
+            </div>
+            
+        </section>
+
+        <section class="location-card kyiv">
+            <img src="images/image7.png" alt="Kyiv" class="location-image">
+            <div class="location-description">
+                <img src="images/star.svg" alt="star icon" class="star-icon">
+                <h2>Автентична Київщина</h2>
+                <hr>
+                <p>Неподалік центра Києва розташувалось автентичне українське село на території однойменного села Пирогово. Дерев’яні млини, запашний хліб, приготовлений своїми руками, українські пісні та багато іншого чекає на вас уже зараз.
+                </p>
+                <a href="" class="details-link">Детальніше</a>
+            </div>
+        </section>
+
+        <section class="location-card kyiv">
+            <img src="images/image8.png" alt="Kyiv" class="location-image">
+            <div class="location-description">
+                <img src="images/star.svg" alt="star icon" class="star-icon">
+                <h2>Нетипова Одещина</h2>
+                <hr>
+                <p>В Одеській області знаходиться мальовниче містечко Вилкове.
+                    Його ще називають «українською Венецією». Вилкове - це містечко
+                    на воді, весь в каналах. Розташоване в місці, де зустрічаються річка
+                    Дунай і Чорне море. Люди пересуваються переважно човнами.
+                    Нетипове українське село не залишить Вас без вражень.
+                </p>
+                <a href="" class="details-link">Детальніше</a>
+            </div>
+            <button class="scroll-button booking-scroll">↑</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2021 HolidayTime. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

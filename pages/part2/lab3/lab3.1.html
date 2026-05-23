@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Booking Form</title>
+    </head>
+    <body>
+        <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+        <h1 align="center">Booking Form</h1>
+        <p align="center">Special discount for "Програмування для інтернет" students</p>
+        <form action="/submit_booking" method="post">
+            <fieldset id="personal_info">
+                <legend> Personal Information</legend>
+                <fieldset>
+                <legend>Name *</legend>
+                <input type="text" id="firstName" name="firstName" required><br>
+                <small>First Name</small><br>
+                <input type="text" id="lastName" name="lastName" required><br>
+                <small>Last Name</small><br>
+                </fieldset>
+                <br>
+
+                <label for="email">Email *</label><br>
+                <input type="email" id="email" name="email" placeholder="ex: myname@example.com " size="30"required><br>
+                <small>example@example.com</small>
+            </fieldset>
+
+            <br>
+            <label for="room-type">Room Type *</label><br>
+            <select id="room-type" name="room-type" required>
+                <option disabled selected>Select a room type</option>
+                <option value="single">Single Room</option>
+                <option value="double">Double Room</option>
+                <option value="suite">Suite</option>
+            </select><br><br>
+
+            <label for="guests">Number of Guests *</label><br>
+            <input type="number" id="guests" name="guests" min="1" max="10" placeholder="e.g., 4"><br>
+            <small>(min 1, max 10)</small>
+            <br><br>
+            <label for="date">Arival date and time *</label><br>
+            <input type="date" id="date" name="date" required><br><br>
+            <input type="time" id="time" name="time" required><br>
+            <small> Hour Minutes</small>
+            <br><br>
+
+            <fieldset id="departure_date">
+                <legend>Departure Date *</legend>
+
+                <select id="month" required>
+                    <option disabled selected>Please select a month</option>
+                    <option value="jan">January</option>
+                    <option value="feb">February</option>
+                    <option value="mar">March</option>
+                    <option value="apr">April</option>
+                    <option value="may">May</option>
+                    <option value="jun">June</option>
+                    <option value="jul">July</option>
+                    <option value="aug">August</option>
+                    <option value="sep">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                </select>
+                &nbsp;
+                <select id="day" required>
+                    <option disabled selected>Please select a day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                    &nbsp;
+                <select id="year" required>
+                    <option disabled selected>Please select a year</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+            </fieldset>
+            <br>
+            <label>Free Pickup? *</label><br>
+            <label>
+                <input type="radio" name="pickup" value="yes">
+                Yes Please! - Pick me up on arrival
+            </label>
+            &nbsp;&nbsp;
+            <label>
+                <input type="radio" name="pickup" value="no">
+                No Thanks - I'll make my own way there
+            </label>
+            <br><br>
+            <label>Flight Number</label><br>
+            <input type="text" size="40">
+            <br><br>
+
+            <label>Meals *</label><br>
+            <label><input type="checkbox" value="breakfast"> breakfast</label><br>
+            <label><input type="checkbox" value="lunch"> lunch</label><br>
+            <label><input type="checkbox" value="afternoon_tea"> afternoon tea</label><br>
+            <label><input type="checkbox" value="dinner"> dinner</label>
+            <br><br>
+            <label for="special_req">Special Requests</label><br>
+            <textarea id="special_req" name="special_req" rows="4" cols="50"></textarea>
+            <br><br>
+
+            <center>
+                    <input type="submit" value="Submit">
+            </center>
+    
+        </form>
+    </body>
+</html>

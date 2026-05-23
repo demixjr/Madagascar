@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Booking Form</title>
+</head>
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+<div align="center">
+    <img src="hotel.png" width="100%" alt="Banner">
+    <h1>Hotel Booking</h1>
+    <p><small>Special discounts for "Програмування для Інтернет" students</small></p>
+</div>
+
+<form action="#" method="get">
+    <fieldset style="border: none">
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="50%" valign="top">
+                    <label><b>Name</b> <span style="color: red">*</span></label><br>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td><input type="text" name="fname" required style="width: 150px">&nbsp;</td>
+                            <td><input type="text" name="lname" required style="width: 150px"></td>
+                        </tr>
+                        <tr>
+                            <td><small style="color: gray">First Name</small></td>
+                            <td><small style="color: gray">Last Name</small></td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="top">
+                    <label><b>E-mail</b> <span style="color: red">*</span></label><br>
+                    <input type="email" name="user_email" placeholder="ex: myname@example.com" required style="width: 300px"><br>
+                    <small style="color: gray">example@example.com</small>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <br><label><b>Room Type</b></label><br>
+                    <select name="room" style="width: 310px;">
+                        <option value="">Please Select</option>
+                        <option value="std">Standard</option>
+                        <option>Superior</option>
+                        <option>Deluxe</option>
+                        <option>President</option>
+                    </select>
+                </td>
+                <td>
+                    <br><label><b>Number of Guests</b> <span style="color: red">*</span></label><br>
+                    <input type="text" name="guests_count" placeholder="e.g., 4" required style="width: 300px"><br>
+                    <small style="color: gray">(min 1, max 10)</small>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset style="border: none;">
+        <p>
+            <label><b>Arrival Date & Time</b> <span style="color: red">*</span></label><br>
+            <input type="date" name="arrival_date" required>
+            <input type="time" name="arrival_time" required>
+            <select name="period">
+                <option>AM</option>
+                <option>PM</option>
+            </select><br>
+            <small style="color: gray">Hour Minutes</small>
+        </p>
+
+        <p>
+            <label><b>Departure Date</b> <span style="color: red">*</span></label><br>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <select name="month" required>
+                        <option value="">Please select a month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                    </select>&nbsp;
+                </td>
+                <td>
+                    <select name="day" required>
+                        <option value="">Please select a day</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>&nbsp;
+                </td>
+                <td>
+                    <select name="year" required>
+                        <option value="">Please select a year</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><small style="color: gray;">Month</small></td>
+                <td><small style="color: gray;">Day</small></td>
+                <td><small style="color: gray;">Year</small></td>
+            </tr>
+        </table>
+        </p>
+    </fieldset>
+
+    <fieldset style="border: none">
+        <p>
+            <label><b>Free Pickup?</b> <span style="color: red">*</span></label><br>
+            <input type="radio" id="p1" name="pickup" value="yes"> <label for="p1">Yes Please! - Pick me up on arrival</label>
+            &nbsp;&nbsp;
+            <input type="radio" id="p2" name="pickup" value="no"> <label for="p2">No Thanks - I'll make my own way there</label>
+        </p>
+
+        <p>
+            <label style="color: gray">Flight Number</label><br>
+            <input type="text" name="flight" style="width: 100%">
+        </p>
+    </fieldset>
+
+    <fieldset style="border: none">
+        <p>
+            <label><b>Meals</b> <span style="color: red">*</span></label><br>
+            <input type="checkbox" name="m1"> breakfast<br>
+            <input type="checkbox" name="m2"> lunch<br>
+            <input type="checkbox" name="m3"> afternoon tea<br>
+            <input type="checkbox" name="m4"> dinner
+        </p>
+
+        <p>
+            <label><b>Special Requests</b></label><br>
+            <textarea name="requests" rows="6" style="width: 100%"></textarea>
+        </p>
+    </fieldset>
+
+    <div align="center">
+        <input type="submit" value="Submit" style="background-color: #5bbaff; color: white; border: none; padding: 10px 50px; font-size: 16px; cursor: pointer">
+    </div>
+</form>
+</body>
+</html>

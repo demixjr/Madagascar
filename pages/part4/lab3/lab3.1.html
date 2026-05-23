@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+</head>
+
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+    <main>
+        <section>
+            <header>
+                <h1>Hotel Booking</h1>
+                <p>Special discounts for "Програмування для Інтернет" students</p>
+            </header>
+
+            <form>
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <h3>Name *</h3>
+
+                    <label>
+                        <input type="text" name="firstName" required><br>
+                        First Name
+                    </label><br>
+
+                    <label>
+                        <input type="text" name="lastName" required><br>
+                        Last Name
+                    </label>
+                    <br><br>
+
+                    <h3>Email *</h3>
+                    <label>
+                        <input type="email" name="email" required placeholder="ex: myname@example.com"><br>
+                        example@example.com
+                    </label>
+
+                </fieldset>
+
+                <br><br>
+
+                <fieldset>
+                    <legend>Stay Details</legend>
+                    <h3>Room Type *</h3>
+                    <select name="roomType" required>
+                        <option value="">Please select</option>
+                        <option value="single">Single Bed</option>
+                        <option value="double">Double Bed</option>
+                        <option value="suite">Suite</option>
+                    </select>
+
+                    <br><br>
+
+                    <h3>Number of Guests *</h3>
+                    <label>
+                        <input type="number" name="guests" min="1" max="10" required placeholder="e.g., 4"><br>
+                        (min: 1, max: 10)
+                    </label>
+
+                </fieldset>
+                <br><br>
+                <fieldset>
+                    <legend>Arrival & Departure</legend>
+                    <h3>Arrival Date & Time *</h3>
+
+                    <input type="date" name="arrivalDate" required><br>
+                    <label>
+                        <input type="time" name="arrivalTime" required><br>
+                        Hour Minutes</label>
+                    <br><br>
+
+                    <h3>Departure Date *</h3>
+                    <label>
+                        <select name="departureMonth" required>
+                            <option value="">Please select a month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select><br>
+                        Month
+                    </label><br>
+
+                    <label>
+                        <select name="departureDay" required>
+                            <option value="">Please select a day</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select><br>
+                        Day
+                    </label><br>
+
+                    <label>
+                        <select name="departureYear" required>
+                            <option value="">Please select a year</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                        </select><br>
+                        Year
+                    </label>
+
+                </fieldset>
+                <br><br>
+                <fieldset>
+                    <legend>Additional Services</legend>
+
+
+                    <h3>Free Pickup? *</h3>
+                    <label>
+                        <input type="radio" name="pickup" value="yes" required> Yes Please! - Pick me up on arrival
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="pickup" value="no" required> No Thanks - I'll make my own way there
+                    </label>
+
+                    <br><br>
+
+                    <label>
+                        Flight Number<br>
+                        <input type="text" name="flightNumber">
+                    </label>
+
+                    <br><br>
+
+                    <h3>Meals</h3>
+
+                    <label><input type="checkbox" name="meals" value="breakfast"> Breakfast</label><br>
+                    <label><input type="checkbox" name="meals" value="lunch"> Lunch</label><br>
+                    <label><input type="checkbox" name="meals" value="afternoonTea"> Afternoon Tea</label><br>
+                    <label><input type="checkbox" name="meals" value="dinner"> Dinner</label><br>
+
+                </fieldset>
+
+                <br><br>
+
+                <fieldset>
+                    <legend>Special Requests</legend>
+                    <h3>Special Requests</h3>
+                    <textarea name="specialRequests" rows="5" cols="50"></textarea>
+                </fieldset>
+
+                <br><br>
+                <input type="submit" value="Submit">
+
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

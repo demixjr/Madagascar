@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HolidayTime - Особистий кабінет</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- СПІЛЬНА ШАПКА -->
+<header class="main-header">
+  <div class="logo">
+    <img src="images/logo.png" alt="HolidayTime">
+  </div>
+
+  <nav class="nav-menu">
+    <a href="index.html">ГОЛОВНА</a>
+    <a href="about.html">ПРО НАС</a>
+    <a href="booking.html">ЗАБРОНЮВАТИ</a>
+    <a href="contacts.html">КОНТАКТИ</a>
+    <a href="profile.html" class="active">ОСОБИСТИЙ КАБІНЕТ</a> <!-- Активна вкладка -->
+  </nav>
+
+  <div class="lang-dropdown">
+    <div class="lang-current">
+      <img src="images/planet.png" alt="UA" width="20">
+      <span>UA</span>
+    </div>
+    <div class="lang-list">
+      <a href="#">FR</a>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- УНІВЕРСАЛЬНИЙ ЗАГОЛОВОК -->
+  <section class="page-title-hero">
+    <h2>Особистий кабінет</h2>
+  </section>
+
+  <!-- СЕКЦІЯ ПРОФІЛЮ -->
+  <section class="profile-section">
+
+    <div class="profile-card">
+      <!-- Ліва частина: Аватар і кнопки -->
+      <div class="profile-left">
+        <div class="avatar-circle">
+          <img src="images/profile.svg" alt="Аватар">
+        </div>
+        <button class="btn-avatar">Змінити аватар</button>
+        <button class="btn-settings">Налаштування</button>
+      </div>
+
+      <!-- Права частина: Інформація -->
+      <div class="profile-right">
+        <div class="profile-info-row">
+          <span class="info-label name">Петров Іван Іванович</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="info-label">Стать:</span> <span class="info-value">чоловіча</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="info-label">Дата народження:</span> <span class="info-value">10.02.1998</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="info-label">Мобільний телефон:</span> <span class="info-value">+38(097)346-72-50</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="info-label">Ел. пошта:</span> <span class="info-value">petrov@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Кнопка виходу -->
+    <button class="btn-logout">Вийти</button>
+
+  </section>
+</main>
+
+<!-- СПІЛЬНИЙ ФУТЕР -->
+<footer class="main-footer">
+  <p>© 2021 HolidayTime. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

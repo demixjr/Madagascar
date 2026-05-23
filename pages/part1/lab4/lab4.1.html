@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання 1 — Списки</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #f9f5ef;
+      color: #222;
+    }
+
+    h2 {
+      color: #4a3728;
+      border-bottom: 2px solid #c8a87a;
+      padding-bottom: 6px;
+    }
+
+    /* ======= СПИСОК 1: ul  кожний другий li червоний ======= */
+    ul li:nth-child(even) {
+      color: #c0392b;
+    }
+
+    ul {
+      line-height: 2;
+    }
+
+    /* ======= СПИСОК 2: ol  кожен третій починаючи з другого (2,5,8,11) ======= */
+    ol li:nth-child(3n+2) {
+      background-color: #aed6f1;
+    }
+
+    ol {
+      line-height: 2;
+    }
+
+    /* ======= СПИСОК 3: dl  перший dt/dd зелений, останній фіолетовий ======= */
+    dt:first-of-type,
+    dd:first-of-type {
+      color: #1a8c3a;
+    }
+
+    dt:last-of-type,
+    dd:last-of-type {
+      color: #8e44ad;
+    }
+
+    dt {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    dd {
+      margin-left: 20px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+<script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+  <h2>Мої улюблені ігри</h2>
+  <ul>
+    <li>The Witcher 3</li>
+    <li>Minecraft</li>
+    <li>Hollow Knight</li>
+    <li>GTA V</li>
+    <li>Cyberpunk 2077</li>
+    <li>Dark Souls</li>
+    <li>Stardew Valley</li>
+  </ul>
+
+  <h2>Мої улюблені фільми та серіали</h2>
+  <ol>
+    <li>Інтерстеллар</li>
+    <li>Темний лицар</li>
+    <li>Початок</li>
+    <li>Щоденник пам'яті</li>
+    <li>Чорне дзеркало</li>
+    <li>Шерлок</li>
+    <li>Хребет тигра</li>
+    <li>Клинок який знищує демонів</li>
+    <li>Ейфорія</li>
+    <li>Гравітаційні хвилі</li>
+    <li>Марвел</li>
+  </ol>
+
+  <h2>Мої улюблені предмети</h2>
+  <dl>
+    <dt>Навушники AirPods</dt>
+    <dd>Apple AirPods — зручні, бездротові, ідеальні для музики та дзвінків</dd>
+
+    <dt>Телефон iPhone 14 Pro</dt>
+    <dd>Apple iPhone 14 Pro — потужна камера, швидкий процесор, стильний дизайн</dd>
+
+    <dt>LEGO</dt>
+    <dd>Конструктор LEGO — цікаво збирати, розвиває уяву та посидючість</dd>
+  </dl>
+
+</body>
+</html>

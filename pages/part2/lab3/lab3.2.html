@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Опитування студентів КАІ</title>
+    </head>
+    <body>
+        <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+        <h1 align="center">Опитування студентів КАІ</h1>
+        <p align="center">Для покращення умов навчання</p>
+        <form>
+            <fieldset id="personal_info">
+                <legend> Введіть ваші персональні дані</legend>
+                <label for="firstName">Ім'я *</label><br>
+                <input type="text" id="firstName" name="firstName" required><br>
+
+                <label for="lastName">Прізвище *</label><br>
+                <input type="text" id="lastName" name="lastName" required><br>
+
+                <label for="phone">Телефон (необов'язково)</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="+380501234567">
+                <br>
+                <label for="email">Пошта *</label><br>
+                <input type="email" id="email" name="email" placeholder="ex: myname@stud.kai.edu.ua " size="30" required><br>
+                <small>example@stud.kai.edu.ua</small>
+                <br><br>
+                <label for="facultacy">Факультет *</label><br>
+                <select id="facultacy" name="facultacy" required>
+                    <option disabled selected>Оберіть факультет</option>
+                    <option value="fknt">ФКНТ</option>
+                    <option value="faet">ФАЕТ</option>
+                    <option value="fmfm">ФМФМ</option>
+                    <option value="fpmv">ФПМВ</option>
+                    <option value="ftl">ФТЛ</option>
+                </select>
+                <br>
+                <label for="speciality">Спеціальність *</label><br>
+                <input type="text" id="speciality" name="speciality" required><br>
+                <label for="course">Курс *</label><br>
+                <input type="number" id="course" name="course" min="1" max="6"><br>
+                <small>(Від 1 до 6)</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Оцінка навчального процесу</legend>
+            
+                <label>Як ви оцінюєте якість викладання? *</label><br>
+                <label><input type="radio" name="teaching" value="5" required> 5 - Відмінно</label><br>
+                <label><input type="radio" name="teaching" value="4"> 4 - Добре</label><br>
+                <label><input type="radio" name="teaching" value="3"> 3 - Задовільно</label><br>
+                <label><input type="radio" name="teaching" value="2"> 2 - Погано</label><br>
+                <label><input type="radio" name="teaching" value="1"> 1 - Дуже погано</label>
+                <br><br>
+            
+                <label>Які формати навчання вам подобаються? *</label><br>
+                <label><input type="checkbox" name="format" value="lectures"> Лекції</label><br>
+                <label><input type="checkbox" name="format" value="labs"> Лабораторні роботи</label><br>
+                <label><input type="checkbox" name="format" value="seminars"> Практичні заняття</label><br>
+                <br><br>
+
+                <label for="difficulty">Як ви оцінюєте складність навчального матеріалу? *</label><br>
+                <select id="difficulty" name="difficulty" required>
+                    <option disabled selected>Оберіть рівень складності</option>
+                    <option value="very_easy">Дуже легко</option>
+                    <option value="easy">Легко</option>
+                    <option value="moderate">Помірно</option>
+                    <option value="hard">Складно</option>
+                    <option value="very_hard">Дуже складно</option>
+                </select>
+                <br><br>
+
+                <label for="satisfaction">Загальна задоволеність навчанням *</label><br>
+                <select id="satisfaction" name="satisfaction" required>
+                    <option disabled selected>Оберіть рівень задоволеності</option>
+                    <option value="very_satisfied">Дуже задоволений</option>
+                    <option value="satisfied">Задоволений</option>
+                    <option value="neutral">Нейтрально</option>
+                    <option value="dissatisfied">Незадоволений</option>
+                    <option value="very_dissatisfied">Дуже незадоволений</option>   
+                </select>
+                <br><br>
+                
+                <label>Чи задоволені ви розкладом занять? *</label><br>
+                <label><input type="radio" name="schedule" value="yes" required> Так</label>
+                &nbsp;
+                <label><input type="radio" name="schedule" value="partly"> Частково</label>
+                &nbsp;
+                <label><input type="radio" name="schedule" value="no"> Ні</label>
+                </fieldset>
+                <br>
+            
+                <fieldset>
+                <legend>Дата заповнення</legend>
+                <label for="fill_date">Дата *</label><br>
+                <input type="date" id="fill_date" name="fill_date" required>
+                <br><br>
+            
+                <label for="fill_time">Час *</label><br>
+                <input type="time" id="fill_time" name="fill_time" required><br>
+                <small>Година &nbsp; Хвилини</small>
+                </fieldset>
+                <br>
+            
+                <fieldset>
+                <legend>Додатково</legend>                
+            
+                <label for="wishes">Побажання та пропозиції</label><br>
+                <textarea id="wishes" name="wishes" rows="5" cols="50" placeholder="Напишіть ваші побажання та пропозиції тут"></textarea>
+                <br><br>
+            
+                <label for="color">Ваш улюблений колір</label><br>
+                <input type="color" id="color" name="color" value="#7777ff">
+                <br><br>
+            
+                <label>
+                    <input type="checkbox" name="agree" value="yes" required>
+                    Я погоджуюсь на обробку персональних даних *
+                </label>
+                </fieldset>
+                <br>
+            
+                <hr>
+                <center>
+                <input type="reset" value="Очистити форму">
+                &nbsp;&nbsp;
+                <input type="submit" value="Надіслати">
+                </center>
+    
+        </form>
+    </body>
+</html>

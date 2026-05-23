@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HolidayTime - Забронювати</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+<header class="main-header">
+  <div class="logo">
+    <img src="images/logo.png" alt="HolidayTime">
+  </div>
+
+  <nav class="nav-menu">
+    <a href="index.html">ГОЛОВНА</a>
+    <a href="about.html">ПРО НАС</a>
+    <a href="booking.html" class="active">ЗАБРОНЮВАТИ</a>
+    <a href="contacts.html">КОНТАКТИ</a>
+    <a href="profile.html">ОСОБИСТИЙ КАБІНЕТ</a>
+  </nav>
+
+  <div class="lang-dropdown">
+    <div class="lang-current">
+      <img src="images/planet.png" alt="UA" width="20">
+      <span>UA</span>
+    </div>
+    <div class="lang-list">
+      <a href="#">FR</a>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="booking-hero">
+    <h2>Забронювати будиночок</h2>
+  </section>
+
+  <section class="filter-section">
+    <div class="dropdown-wrapper">
+      <div class="filter-select-field" onclick="toggleDropdown()">
+        <span>Оберіть місцерозташування</span>
+        <img src="images/arrow_down.png" alt="" class="select-arrow">
+      </div>
+      <ul class="dropdown-list" id="myDropdown">
+        <li>Бакота</li>
+        <li>Карпати</li>
+        <li>Київ</li>
+        <li>Одеська область</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="booking-list">
+    <article class="booking-card">
+      <div class="card-image"><img src="images/green_house.jpg" alt="Бакота"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Незвідана Бакота</h3>
+          <img src="images/star.png" class="star-toggle" onclick="toggleStar(this)" alt="Star">
+        </div>
+        <p>У Хмельницькій області розташований загублений край - Бакота. Мальовничий каньйон з давньою історією захоплює своїми просторами...</p>
+        <button class="btn-card">Детальніше</button>
+      </div>
+    </article>
+
+    <article class="booking-card">
+      <div class="card-image"><img src="images/house.jpg" alt="Карпати"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Полонини Карпат</h3>
+          <img src="images/star.png" class="star-toggle" onclick="toggleStar(this)" alt="Star">
+        </div>
+        <p>Полонини Карпат, у селі Орів посеред гір розташувався затишний куточок для незабутніх вражень...</p>
+        <a href="house.html" class="btn-card" style="text-decoration: none; text-align: center;">Детальніше</a>
+      </div>
+    </article>
+
+    <article class="booking-card">
+      <div class="card-image"><img src="images/large_house.jpg" alt="Київ"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Автентична Київщина</h3>
+          <img src="images/star.png" class="star-toggle" onclick="toggleStar(this)" alt="Star">
+        </div>
+        <p>Неподалік центра Києва розташувалось автентичне українське село на території села Пирогово...</p>
+        <button class="btn-card">Детальніше</button>
+      </div>
+    </article>
+
+    <article class="booking-card">
+      <div class="card-image"><img src="images/rest_zone.jpg" alt="Одеса"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <h3>Нетипова Одещина</h3>
+          <img src="images/star.png" class="star-toggle" onclick="toggleStar(this)" alt="Star">
+        </div>
+        <p>В Одеській області знаходиться мальовниче містечко Вилкове. Його ще називають «українською Венецією»...</p>
+        <button class="btn-card">Детальніше</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- Оновлена стрілка -->
+  <div class="footer-arrow-container">
+    <a href="#top" class="btn-up">
+      <img src="images/arrow_up.png" alt="Вгору">
+    </a>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <p>© 2021 HolidayTime. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleDropdown() { document.getElementById("myDropdown").classList.toggle("show"); }
+  function toggleStar(element) {
+    element.src = element.src.includes("star.png") ? "images/yellow_star.png" : "images/star.png";
+  }
+</script>
+
+</body>
+</html>

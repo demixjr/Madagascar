@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мої улюблені речі - Лабораторна робота</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            min-height: 100vh;
+            padding: 2vw;
+            background-color: #f0f0f0;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 80ch;
+            margin: 2em auto;
+            background-color: white;
+            padding: 20px;
+        }
+
+        /* Кожний другий елемент */
+        .games-list li:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        /* Кожен третій, починаючи з другого */
+        .movies-list li:nth-child(3n+2) {
+            background-color: lightgreen;
+        }
+
+        /* Базовий відступ для всіх предметів, щоб текст не злипався */
+        .subjects-list li {
+            margin-bottom: 10px;
+        }
+
+        /* Перший та останній елементи */
+        .subjects-list li:first-child,
+        .subjects-list li:last-child {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+<div class="container">
+    <h1>Мої списки улюбленого</h1>
+
+    <h2>Улюблені ігри</h2>
+    <ul class="games-list">
+        <li>Resident Evil</li>
+        <li>Terraria</li>
+        <li>Minecraft</li>
+        <li>Відьмак 3: Дикий Гін</li>
+        <li>Stardew Valley</li>
+    </ul>
+
+    <h2>Улюблені фільми</h2>
+    <ol class="movies-list">
+        <li>Сутінки</li>
+        <li>До зустрічі з тобою</li>
+        <li>Веном</li>
+        <li>Інтерстеллар</li>
+        <li>Початок (Inception)</li>
+        <li>Матриця</li>
+        <li>Дюна</li>
+        <li>Володар перснів</li>
+        <li>Аватар</li>
+        <li>Дедпул</li>
+    </ol>
+
+    <h2>Улюблені предмети</h2>
+    <ul class="subjects-list">
+        <li><strong>Програмування для Інтернет:</strong> Вивчення сучасних веб-технологій, створення сайтів та розуміння клієнт-серверної архітектури.</li> <li><strong>UI/UX дизайн:</strong> Створення зручних, логічних та візуально привабливих інтерфейсів для користувачів.</li>
+        <li><strong>Моделювання та аналіз програмного забезпечення:</strong> Проектування архітектури систем, створення UML діаграм та детальний аналіз вимог.</li> </ul>
+</div>
+</body>
+</html>

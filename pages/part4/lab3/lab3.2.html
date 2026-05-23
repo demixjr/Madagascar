@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опитування студентів</title>
+</head>
+
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+    <main>
+        <section>
+            <header>
+                <h1>Опитування студентів щодо навчального процесу</h1>
+                <p>Ваша думка допоможе покращити якість освіти та організацію студентських заходів.</p>
+            </header>
+            
+            <form>
+                <fieldset>
+                    <legend>Загальна інформація</legend>
+
+                    <h3>Повне ім'я *</h3>
+                    <input type="text" name="studentName" required placeholder="Прізвище та Ім'я">
+
+                    <h3>Контактна пошта *</h3>
+                    <input type="email" name="studentEmail" required placeholder="username@stud.kai.edu.ua">
+
+                    <h3>Ваш курс *</h3>
+                    <select name="course" required>
+                        <option value="">Оберіть курс...</option>
+                        <option value="1">1 курс</option>
+                        <option value="2">2 курс</option>
+                        <option value="3">3 курс</option>
+                        <option value="4">4 курс</option>
+                        <option value="5">5 курс</option>
+                        <option value="6">6 курс</option>
+                    </select>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Оцінка навчання</legend>
+
+                    <h3>Який формат навчання ви вважаєте найефективнішим?</h3>
+                    <label>
+                        <input type="radio" name="format" value="offline" required> Офлайн (в аудиторіях)
+                    </label><br>
+                    <label>
+                        <input type="radio" name="format" value="online" required> Онлайн (дистанційно)
+                    </label><br>
+                    <label>
+                        <input type="radio" name="format" value="mixed" required> Змішаний
+                    </label>
+
+                    <h3>Скільки годин на день ви витрачаєте на самоосвіту?</h3>
+                    <label>
+                        <input type="number" name="studyHours" min="0" max="24" value="2">
+                        <br>
+                        (вкажіть кількість годин від 0 до 24)
+                    </label>
+
+                    <h3>Які ресурси ви використовуєте? (можна декілька)</h3>
+                    <label><input type="checkbox" name="resources" value="udemu"> Udemu</label><br>
+                    <label><input type="checkbox" name="resources" value="coursera"> Coursera</label><br>
+                    <label><input type="checkbox" name="resources" value="youtube"> YouTube-лекції</label><br>
+                    <label><input type="checkbox" name="resources" value="books"> Книги та підручники</label><br>
+                    <label><input type="checkbox" name="resources" value="practice"> Практичні стажування</label><br>
+                    <label><input type="checkbox" name="resources" value="other"> Інше</label>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Дозвілля та активності</legend>
+
+                    <h3>Коли ви зазвичай відвідуєте університетську бібліотеку/коворкінг?</h3>
+                    <label>
+                        Дата:<br>
+                        <input type="date" name="visitDate">
+                    </label>
+                    <br><br>
+                    <label>
+                        Час:<br>
+                        <input type="time" name="visitTime" value="12:00">
+                    </label>
+
+                    <h3>Чи бажаєте ви отримувати розсилку про студентські вечірки?</h3>
+                    <label>
+                        <input type="radio" name="spam" value="yes" checked> Так, надсилайте
+                    </label><br>
+                    <label>
+                        <input type="radio" name="spam" value="no"> Ні, мені це не цікаво
+                    </label><br>
+
+                    <label>
+                        Ваш номер телефону для Telegram/Viber:<br>
+                        <input type="tel" name="phone" pattern="^\+380\d{9}$" placeholder="+380...">
+                    </label>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Ваші пропозиції</legend>
+                    <h3>Що б ви хотіли змінити в університеті?</h3>
+                    <textarea name="feedback" rows="5" cols="50" placeholder="Ваші ідеї та зауваження..."></textarea>
+                </fieldset>
+
+                <br>
+                <input type="submit" value="Надіслати відповіді">
+                <input type="reset" value="Очистити форму">
+
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

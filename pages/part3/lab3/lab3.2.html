@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Опитування студентів 2026</title>
+</head>
+<body>
+    <script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+<div align="center">
+    <h1>Опитування: Якість освітнього процесу</h1>
+    <p>Ваша думка допоможе нам стати кращими. Будь ласка, заповніть усі поля.</p>
+    <hr width="90%">
+</div>
+
+<form action="#" method="post">
+    <fieldset style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px">
+        <legend><b>Персональні дані</b></legend>
+        <table width="100%" cellpadding="5">
+            <tr>
+                <td width="50%" valign="top">
+                    <label><b>Прізвище та Ім'я</b> <span style="color: red">*</span></label><br>
+                    <input type="text" name="studentName" placeholder="Наприклад: Шевченко Тарас" required style="width: 90%"><br>
+                    <small style="color: gray">Введіть повне ім'я</small>
+                </td>
+                <td valign="top">
+                    <label><b>Електронна пошта</b> <span style="color: red">*</span></label><br>
+                    <input type="email" name="studentEmail" placeholder="name@example.com" required style="width: 90%"><br>
+                    <small style="color: gray">Корпоративна або особиста пошта</small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br><label><b>Ваша спеціальність</b></label><br>
+                    <select name="specialty" style="width: 93%">
+                        <option value="">Оберіть напрямок</option>
+                        <option value="it">Інженерія програмного забезпечення</option>
+                        <option value="cs">Комп'ютерні науки</option>
+                        <option value="cyb">Кібербезпека</option>
+                    </select>
+                </td>
+                <td>
+                    <br><label><b>Дата заповнення</b> <span style="color: red">*</span></label><br>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <select name="d_day" required>
+                                    <option value="1">1</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                </select>&nbsp;
+                            </td>
+                            <td>
+                                <select name="d_month" required>
+                                    <option value="1">Січень</option>
+                                    <option value="3">Березень</option>
+                                    <option value="4">Квітень</option>
+                                </select>&nbsp;
+                            </td>
+                            <td>
+                                <select name="d_year" required>
+                                    <option value="2026" selected>2026</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><small style="color: gray">День</small></td>
+                            <td><small style="color: gray">Місяць</small></td>
+                            <td><small style="color: gray">Рік</small></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px">
+        <legend><b>Навчальний досвід</b></legend>
+        <p>
+            <label><b>На якому курсі ви навчаєтесь?</b> <span style="color: red">*</span></label><br>
+            <input type="radio" id="c1" name="course" value="1">
+            <label for="c1">1 курс</label>
+            <input type="radio" id="c2" name="course" value="2">
+            <label for="c2">2 курс</label>
+            <input type="radio" id="c3" name="course" value="3">
+            <label for="c3">3 курс</label>
+            <input type="radio" id="c4" name="course" value="4">
+            <label for="c4">4 курс</label>
+        </p>
+
+        <p>
+            <label><b>Які технології ви вивчаєте зараз?</b> (можна обрати декілька)</label><br>
+            <input type="checkbox" name="tech1" value="html"> HTML/CSS<br>
+            <input type="checkbox" name="tech2" value="js"> JavaScript<br>
+            <input type="checkbox" name="tech3" value="db"> Бази даних<br>
+            <input type="checkbox" name="tech4" value="design"> UI/UX Дизайн
+        </p>
+    </fieldset>
+
+    <fieldset style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px">
+        <legend><b>Додаткові побажання</b></legend>
+        <p>
+            <label><b>Ваш коментар щодо покращення курсів:</b></label><br>
+            <textarea name="user_message" rows="5" style="width: 100%;" placeholder="Напишіть тут ваші пропозиції..."></textarea>
+        </p>
+        <p>
+            <label><b>Зручний час для занять:</b></label>
+            <input type="time" name="class_time" value="09:00">
+        </p>
+    </fieldset>
+
+    <div align="center">
+        <input type="reset" value="Очистити форму" style="padding: 10px 20px;">
+        &nbsp;
+        <input type="submit" value="Надіслати анкету"
+               style="background-color: #2ea44f; color: white; border: none; padding: 10px 40px; font-weight: bold; cursor: pointer">
+    </div>
+</form>
+<br>
+</body>
+</html>

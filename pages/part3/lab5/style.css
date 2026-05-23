@@ -1,0 +1,579 @@
+/* =========================================
+   1. БАЗОВІ НАЛАШТУВАННЯ ТА ШРИФТИ
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #6d7a7c; /* Темний фон для бокових полів */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #e6e6e6; /* Світлий фон контенту */
+    padding-bottom: 50px;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. СПІЛЬНІ ЕЛЕМЕНТИ (ШАПКА ТА ФУТЕР)
+   ========================================= */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a2e45;
+    padding: 15px 50px;
+    color: white;
+}
+
+.nav-menu { display: flex; gap: 20px; }
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    border-right: 1px solid rgba(255,255,255,0.3);
+    padding-right: 20px;
+}
+.nav-menu a:last-child { border-right: none; }
+.nav-menu a.active { color: #a3c14a; } /* Підсвітка активної сторінки */
+
+.lang-dropdown { position: relative; }
+.lang-current { display: flex; align-items: center; gap: 5px; cursor: pointer; font-weight: bold; }
+.lang-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2a2e45;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 100;
+}
+.lang-dropdown:hover .lang-list { display: flex; }
+.lang-list a { color: white; text-decoration: none; padding: 5px 0; }
+
+.main-footer {
+    background-color: #2a2e45;
+    color: white;
+    text-align: left;
+    padding: 15px 50px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* =========================================
+   3. СПІЛЬНА КНОПКА "ВГОРУ"
+   ========================================= */
+/* Базовий вигляд кнопки */
+.btn-up {
+    width: 60px;
+    height: 60px;
+    background-color: #8c9b9d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.btn-up:hover { transform: scale(1.1); background-color: #7a888a; }
+.btn-up img { width: 20px; height: auto; }
+
+/* Позиція кнопки для Головної сторінки (біля форми) */
+.btn-up--form {
+    position: absolute;
+    right: 50px;
+    bottom: 40px;
+}
+
+/* Позиція кнопки для Бронювання (окремий контейнер внизу) */
+.footer-arrow-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 50px 20px 0;
+}
+
+/* =========================================
+   4. ГОЛОВНА СТОРІНКА (index.html)
+   ========================================= */
+.hero-section {
+    height: 300px;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/mountains-bg.jpg') center/cover;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; margin: 20px;
+}
+.hero-section h1 { font-size: 36px; margin-bottom: 10px; }
+.hero-section p { font-size: 18px; font-weight: bold; }
+
+.house-slider { position: relative; margin: 0 20px 20px 20px; }
+.image-link { display: block; }
+.main-house-img { width: 100%; display: block; border-radius: 2px; }
+
+.house-info-box {
+    position: absolute; bottom: 0; left: 0; width: 75%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 80%, rgba(255, 255, 255, 0) 100%);
+    padding: 30px 40px 60px 40px; min-height: 120px;
+}
+.house-info-box p { font-size: 15px; color: #333; margin-bottom: 15px; line-height: 1.4; font-style: italic;}
+
+.btn-slider {
+    position: absolute; top: -25px; right: 0; background-color: #1e2640; color: white; border: none;
+    padding: 12px 25px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.btn-slider img { width: 16px; transform: rotate(180deg); }
+
+.slider-arrow { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer; }
+.slider-arrow img { width: 35px; }
+
+.slider-dots { position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; z-index: 10; }
+.dot { display: inline-block; width: 12px; height: 12px; background-color: #2e4d23; border-radius: 50%; margin: 0 4px; }
+.dot.active { background-color: #a3c14a; }
+
+.active-rest { display: flex; margin: 20px; gap: 20px; }
+.rest-image { flex: 1; }
+.rest-image img { width: 100%; display: block; }
+.rest-text { flex: 1; background-color: #d9d9d9; display: flex; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+
+.feedback-section { position: relative; display: flex; justify-content: center; padding: 40px 0; }
+.form-wrapper { background-color: #f2f2f2; padding: 30px; width: 300px; display: flex; flex-direction: column; }
+.form-wrapper h3 { text-align: center; margin-bottom: 20px; color: #333; }
+.form-wrapper label { font-size: 12px; margin-bottom: 5px; color: #555; }
+.form-wrapper input { margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; }
+.btn-submit { background-color: #4a5073; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; }
+
+/* =========================================
+   5. СТОРІНКА БРОНЮВАННЯ (booking.html)
+   ========================================= */
+.booking-hero { background-color: #d1d5e8; text-align: center; padding: 40px 0; font-style: italic; color: #2a2e45; }
+
+.filter-section { padding: 30px 0; display: flex; justify-content: center; }
+.dropdown-wrapper { position: relative; width: 80%; }
+.filter-select-field { background-color: #f2f2f2; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.dropdown-list { display: none; position: absolute; width: 100%; background-color: #b0b0b0; list-style: none; z-index: 10; }
+.dropdown-list.show { display: block; }
+.dropdown-list li { padding: 15px; text-align: center; font-style: italic; border-bottom: 1px solid #999; cursor: pointer; }
+.dropdown-list li:hover { background-color: #a0a0a0; }
+
+.booking-card { display: flex; background-color: #c4c4c4; margin: 20px auto; width: 90%; padding: 25px; gap: 30px; align-items: stretch; }
+.card-image { flex: 1; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.card-content { flex: 2; display: flex; flex-direction: column; }
+.card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid white; padding-bottom: 10px; margin-bottom: 15px; }
+.card-header h3 { font-style: italic; font-size: 20px; color: #2a2e45; }
+.star-toggle { width: 25px; cursor: pointer; }
+.card-content p { font-size: 14px; line-height: 1.6; color: #333; }
+
+.btn-card { align-self: flex-end; margin-top: auto; background-color: #2a2e45; color: white; border: none; padding: 10px 30px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+.btn-card:hover { background-color: #1e2640; }
+
+/* =========================================
+   8. СТОРІНКА БУДИНОЧКА (house.html)
+   ========================================= */
+
+/* Кнопка "Назад" */
+.back-nav {
+    padding: 20px 50px;
+}
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2a2e45;
+    color: white;
+    text-decoration: none;
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+.btn-back img { width: 15px; }
+
+/* Галерея та Опис (Grid) */
+.house-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px; /* Відстань між фото */
+    margin: 0 50px;
+}
+
+.gallery-main-img img,
+.gallery-sub-img img,
+.gallery-small-imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-text {
+    background-color: #d9d9d9; /* Сірий фон тексту */
+    padding: 30px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000;
+}
+
+.gallery-small-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Секція "Наявність місць" */
+.availability-section {
+    margin: 40px 50px;
+}
+.section-title {
+    text-align: center;
+    color: #2a2e45;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.availability-form {
+    background-color: #d1d5e8; /* Світло-фіолетовий фон */
+    padding: 30px;
+}
+.form-question { margin-bottom: 20px; color: #333; }
+
+.form-inputs-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.date-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.date-input {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 200px;
+    border: 1px solid #ccc;
+    color: #888;
+}
+
+.btn-check-avail {
+    background-color: #2a2e45;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+
+    /* Відсуваємо кнопку правіше від полів з датами */
+    margin-left: 60px;
+}
+
+.counters-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: center;
+}
+.counters-row label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+.counters-row input {
+    width: 45px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* Таблиця цін */
+.pricing-table {
+    margin: 40px 50px;
+}
+
+.table-header {
+    display: flex;
+    background-color: #4a5073;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.table-row {
+    display: flex;
+    background-color: #d1d5e8;
+    align-items: center;
+}
+
+.col-capacity { flex: 1; padding: 20px; border-right: 1px solid white; display: flex; justify-content: center; gap: 5px; }
+.col-type { flex: 2; padding: 20px; border-right: 1px solid white; }
+.col-price { flex: 1; padding: 20px; display: flex; justify-content: center; }
+
+.table-icons img { width: 35px; }
+.bed-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+.bed-info img { width: 45px; }
+
+.btn-show-price {
+    background-color: #6a85b6; /* Світло-синій як на макеті */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* =========================================
+   9. СТОРІНКА КОНТАКТІВ (contacts.html)
+   ========================================= */
+
+/* Заголовок сторінки */
+.contacts-hero {
+    background-color: #d1d5e8; /* Світло-фіолетовий фон як на макеті */
+    padding: 30px 50px; /* Відступи, щоб текст не прилипав до лівого краю */
+}
+
+.contacts-hero h2 {
+    font-style: italic;
+    color: #2a2e45;
+    font-size: 24px;
+}
+
+/* Основний контейнер для сітки контактів */
+.contacts-content {
+    padding: 60px 50px;
+}
+
+/* Налаштування CSS Grid */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 однакові колонки */
+    row-gap: 50px; /* Відстань між рядками */
+    column-gap: 20px; /* Відстань між колонками */
+}
+
+/* Стилі для кожного текстового блоку */
+.contact-item h4 {
+    font-size: 16px;
+    color: #000;
+    border-bottom: 1px solid #2a2e45; /* Лінія під заголовком */
+    display: inline-block; /* Щоб лінія була завширшки як текст */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-weight: normal;
+}
+
+.contact-item p {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Карта */
+.contact-map {
+    /* Вказуємо, що карта має починатися з другої колонки і тягнутися до кінця (охоплює 2 і 3 колонку) */
+    grid-column: 2 / 4;
+}
+
+.contact-map img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px; /* М'які закруглені кути карти */
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Легка тінь для об'єму */
+}
+
+/* =========================================
+   10. СТОРІНКА "ПРО НАС" (about.html)
+   ========================================= */
+
+/* Універсальний бузковий заголовок (можна використовувати на інших сторінках) */
+.page-title-hero {
+    background-color: #d1d5e8;
+    text-align: center;
+    padding: 30px 50px;
+    text-align: left; /* На макеті текст зліва */
+}
+
+.page-title-hero h2 {
+    font-style: italic;
+    color: #2a2e45;
+    font-size: 24px;
+}
+
+/* Банер з лісом */
+.about-banner {
+    margin: 30px 50px;
+    height: 180px;
+    /* Використовуємо forest.jpg з легким затемненням для читабельності тексту */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/forest.jpg') center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.banner-content h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.banner-content p {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Сірий блок з текстом */
+.about-text-box {
+    background-color: #d9d9d9;
+    margin: 0 50px 50px 50px; /* Відступи по боках і знизу */
+    padding: 40px;
+    color: #333;
+}
+
+.about-text-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Прибираємо відступ у останнього абзацу, щоб блок виглядав акуратно */
+.about-text-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* =========================================
+   11. ОСОБИСТИЙ КАБІНЕТ (profile.html)
+   ========================================= */
+
+.profile-section {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрує картку та кнопку "Вийти" по горизонталі */
+}
+
+/* Сіра картка профілю */
+.profile-card {
+    background-color: #c4c4c4;
+    display: flex;
+    width: 80%;
+    padding: 40px;
+    gap: 50px; /* Відстань між аватаром та текстом */
+}
+
+/* Ліва колонка (Аватар + кнопки) */
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    gap: 15px; /* Відстань між елементами зліва */
+}
+
+.avatar-circle {
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-circle img {
+    width: 60px; /* Розмір іконки profile.svg */
+    height: auto;
+}
+
+.btn-avatar, .btn-settings {
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-avatar {
+    background-color: #6a85b6; /* Синьо-сірий колір */
+}
+.btn-avatar:hover { background-color: #556e9c; }
+
+.btn-settings {
+    background-color: #4a5073; /* Темно-сірий колір */
+}
+.btn-settings:hover { background-color: #3b405c; }
+
+/* Права колонка (Інформація) */
+.profile-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px; /* Відстань між рядками з інформацією */
+}
+
+/* Рядок з підкресленням */
+.profile-info-row {
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+/* Назви полів (Стать, Дата народження тощо) */
+.info-label {
+    font-weight: bold;
+    font-style: italic;
+    color: #2a2e45;
+}
+
+/* ПІБ користувача */
+.info-label.name {
+    font-size: 18px;
+}
+
+/* Значення полів */
+.info-value {
+    font-style: italic;
+    color: #444;
+}
+
+/* Кнопка "Вийти" */
+.btn-logout {
+    margin-top: 40px;
+    background-color: #2a2e45;
+    color: white;
+    border: none;
+    padding: 12px 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #1e2640;
+}

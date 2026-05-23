@@ -1,0 +1,22 @@
+body{
+    color: rgb(96,96,96);
+}
+
+ul li:nth-child(2n){
+    color:red;
+}
+
+ol li:nth-child(3n+2){
+    color:blue;
+}
+
+dl dt:first-child{
+    color:rgb(255,255,0);
+}
+
+dl dt:nth-last-child(2){
+    color:orange;
+}
+dl dd:last-child{
+    color:green;
+}

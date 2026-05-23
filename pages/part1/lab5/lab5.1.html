@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube — Головна</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface2: #272727;
+      --border: #333;
+      --text: #f1f1f1;
+      --text-muted: #aaa;
+      --red: #ff0000;
+      --header-h: 56px;
+      --aside-w: 240px;
+      --aside-w-mini: 72px;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background .2s;
+    }
+    .menu-btn:hover { background: var(--surface2); }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      background: var(--red);
+      color: #fff;
+      width: 34px; height: 24px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+    }
+    .logo-text {
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .logo-country {
+      color: var(--text-muted);
+      font-size: 10px;
+      align-self: flex-end;
+      margin-bottom: 2px;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 640px;
+      margin: 0 40px;
+    }
+
+    .search-box {
+      flex: 1;
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    .search-box input {
+      flex: 1;
+      background: var(--surface);
+      border: none;
+      outline: none;
+      color: var(--text);
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+    .search-box button {
+      background: var(--surface2);
+      border: none;
+      border-left: 1px solid var(--border);
+      color: var(--text);
+      padding: 0 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background .2s;
+    }
+    .search-box button:hover { background: #444; }
+
+    .mic-btn {
+      background: var(--surface2);
+      border: none;
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background .2s;
+    }
+    .mic-btn:hover { background: #444; }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background .2s;
+      position: relative;
+    }
+    .icon-btn:hover { background: var(--surface2); }
+
+    .avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ─── LAYOUT ────────────────────────────────────────── */
+    .layout {
+      display: flex;
+      margin-top: var(--header-h);
+    }
+
+    /* ─── ASIDE / SIDEBAR ───────────────────────────────── */
+    aside {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      width: var(--aside-w);
+      height: calc(100vh - var(--header-h));
+      background: var(--bg);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 12px 0;
+      transition: width .2s;
+      z-index: 90;
+    }
+    aside::-webkit-scrollbar { width: 4px; }
+    aside::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    body.mini aside { width: var(--aside-w-mini); }
+
+    .nav-section {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-section:first-child { border-top: none; }
+
+    .nav-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      padding: 8px 24px 4px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    body.mini .nav-label { display: none; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 8px 24px;
+      cursor: pointer;
+      border-radius: 10px;
+      margin: 0 8px;
+      transition: background .15s;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .nav-item:hover { background: var(--surface2); }
+    .nav-item.active { background: var(--surface2); font-weight: 600; }
+    .nav-item i { font-size: 20px; min-width: 20px; text-align: center; }
+    .nav-item span { font-size: 14px; }
+    body.mini .nav-item span { display: none; }
+    body.mini .nav-item { gap: 0; justify-content: center; padding: 12px; }
+
+    /* ─── MAIN CONTENT ──────────────────────────────────── */
+    main {
+      margin-left: var(--aside-w);
+      flex: 1;
+      padding: 24px 24px;
+      transition: margin-left .2s;
+    }
+    body.mini main { margin-left: var(--aside-w-mini); }
+
+    /* ─── CHIPS / FILTER ────────────────────────────────── */
+    .chips {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+
+    .chip {
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .chip:not(.active) {
+      background: var(--surface2);
+      color: var(--text);
+    }
+    .chip:not(.active):hover { background: #444; }
+
+    /* ─── VIDEO GRID (float layout) ─────────────────────── */
+    .video-grid::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .video-card {
+      float: left;
+      width: calc(33.333% - 16px);
+      margin: 0 8px 32px;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    .video-card:hover { transform: translateY(-2px); }
+    .video-card:nth-child(3n+1) { margin-left: 0; }
+    .video-card:nth-child(3n)   { margin-right: 0; }
+
+    @media (max-width: 1100px) {
+      .video-card { width: calc(50% - 12px); }
+      .video-card:nth-child(3n+1) { margin-left: 8px; }
+      .video-card:nth-child(3n)   { margin-right: 8px; }
+      .video-card:nth-child(2n+1) { margin-left: 0; }
+      .video-card:nth-child(2n)   { margin-right: 0; }
+    }
+
+    .thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      margin-bottom: 12px;
+    }
+    .thumb-wrap iframe {
+      width: 100%; height: 100%;
+      border: none;
+      display: none;
+    }
+    .thumb-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .thumb-wrap.playing img { display: none; }
+    .thumb-wrap.playing iframe { display: block; }
+
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.3);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .thumb-wrap:hover .play-overlay { opacity: 1; }
+    .thumb-wrap.playing .play-overlay { display: none; }
+    .play-overlay i { font-size: 48px; color: #fff; filter: drop-shadow(0 2px 6px #000); }
+
+    .duration {
+      position: absolute;
+      bottom: 8px; right: 8px;
+      background: rgba(0,0,0,.8);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .thumb-wrap.playing .duration { display: none; }
+
+    .video-info {
+      display: flex;
+      gap: 12px;
+    }
+    .channel-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .video-meta h3 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .video-meta p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  </style>
+</head>
+<body>
+<script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+<!-- ════ HEADER ════════════════════════════════════════════ -->
+<header>
+  <div class="header-left">
+    <button class="menu-btn" onclick="document.body.classList.toggle('mini')" title="Меню">
+      <i class="fas fa-bars"></i>
+    </button>
+    <a class="logo" href="#">
+      <div class="logo-icon"><i class="fab fa-youtube"></i></div>
+      <span class="logo-text">YouTube</span>
+      <span class="logo-country">UA</span>
+    </a>
+  </div>
+
+  <div class="header-center">
+    <div class="search-box">
+      <input type="text" placeholder="Пошук" id="search-input" onkeydown="if(event.key==='Enter')doSearch()"/>
+      <button onclick="doSearch()" title="Пошук"><i class="fas fa-search"></i></button>
+    </div>
+    <button class="mic-btn" title="Голосовий пошук"><i class="fas fa-microphone"></i></button>
+  </div>
+
+  <div class="header-right">
+    <button class="icon-btn" title="Створити відео"><i class="fas fa-video"></i></button>
+    <button class="icon-btn" title="Сповіщення">
+      <i class="fas fa-bell"></i>
+      <span style="position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--red);border-radius:50%;"></span>
+    </button>
+    <div class="avatar" title="Мій обліковий запис">ЮЗ</div>
+  </div>
+</header>
+
+<!-- ════ ASIDE ════════════════════════════════════════════ -->
+<div class="layout">
+<aside>
+  <div class="nav-section">
+    <a class="nav-item active" href="#"><i class="fas fa-home"></i><span>Головна</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-compass"></i><span>Огляд</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-film"></i><span>Shorts</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-photo-video"></i><span>Підписки</span></a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Ви</div>
+    <a class="nav-item" href="#"><i class="fas fa-user-circle"></i><span>Ваш канал</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-history"></i><span>Історія</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-play-circle"></i><span>Мої відео</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-clock"></i><span>Перегляньте пізніше</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-thumbs-up"></i><span>Вподобані відео</span></a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Підписки</div>
+    <a class="nav-item" href="#"><i class="fas fa-circle" style="color:#FF0000;font-size:10px;min-width:20px;text-align:center;"></i><span>T-Series</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-circle" style="color:#1DA462;font-size:10px;min-width:20px;text-align:center;"></i><span>Веселий Вулик</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-circle" style="color:#4B9CD3;font-size:10px;min-width:20px;text-align:center;"></i><span>Науковий Канал</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-circle" style="color:#FF6B35;font-size:10px;min-width:20px;text-align:center;"></i><span>Tech Insider</span></a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Огляд</div>
+    <a class="nav-item" href="#"><i class="fab fa-youtube" style="color:var(--red)"></i><span>YouTube Premium</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-music"></i><span>YouTube Music</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-tv"></i><span>YouTube Kids</span></a>
+  </div>
+  <div class="nav-section">
+    <a class="nav-item" href="#"><i class="fas fa-cog"></i><span>Налаштування</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-flag"></i><span>Скарги</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-question-circle"></i><span>Довідка</span></a>
+    <a class="nav-item" href="#"><i class="fas fa-comment-dots"></i><span>Зворотній зв'язок</span></a>
+  </div>
+</aside>
+
+<!-- ════ MAIN ════════════════════════════════════════════ -->
+<main>
+  <!-- Chips -->
+  <div class="chips">
+    <button class="chip active" onclick="setChip(this)">Усі</button>
+    <button class="chip" onclick="setChip(this)">Ігри</button>
+    <button class="chip" onclick="setChip(this)">Музика</button>
+    <button class="chip" onclick="setChip(this)">Живе</button>
+    <button class="chip" onclick="setChip(this)">Програмування</button>
+    <button class="chip" onclick="setChip(this)">Наука</button>
+    <button class="chip" onclick="setChip(this)">Спорт</button>
+    <button class="chip" onclick="setChip(this)">Подорожі</button>
+    <button class="chip" onclick="setChip(this)">Кулінарія</button>
+    <button class="chip" onclick="setChip(this)">Новини</button>
+  </div>
+
+  <!-- Video Grid (float layout) -->
+  <div class="video-grid" id="video-grid"></div>
+</main>
+</div>
+
+<script>
+  /* ── Data ── */
+  const videos = [
+    {
+      id: "dQw4w9WgXcQ",
+      title: "Rick Astley — Never Gonna Give You Up (Official Music Video)",
+      channel: "Rick Astley",
+      views: "1.4 млрд переглядів",
+      ago: "35 років тому",
+      duration: "3:32",
+      avatar: "https://i.pravatar.cc/36?img=1"
+    },
+    {
+      id: "9bZkp7q19f0",
+      title: "PSY — GANGNAM STYLE(강남스타일) M/V",
+      channel: "officialpsy",
+      views: "5.1 млрд переглядів",
+      ago: "12 років тому",
+      duration: "4:13",
+      avatar: "https://i.pravatar.cc/36?img=2"
+    },
+    {
+      id: "JGwWNGJdvx8",
+      title: "Ed Sheeran — Shape of You (Official Music Video)",
+      channel: "Ed Sheeran",
+      views: "6.1 млрд переглядів",
+      ago: "7 років тому",
+      duration: "4:24",
+      avatar: "https://i.pravatar.cc/36?img=3"
+    },
+    {
+      id: "OPf0YbXqDm0",
+      title: "Mark Ronson — Uptown Funk (Official Video) ft. Bruno Mars",
+      channel: "Mark Ronson",
+      views: "5.1 млрд переглядів",
+      ago: "9 років тому",
+      duration: "4:31",
+      avatar: "https://i.pravatar.cc/36?img=4"
+    },
+    {
+      id: "kJQP7kiw5Fk",
+      title: "Luis Fonsi — Despacito ft. Daddy Yankee",
+      channel: "Luis Fonsi",
+      views: "8.3 млрд переглядів",
+      ago: "7 років тому",
+      duration: "4:42",
+      avatar: "https://i.pravatar.cc/36?img=5"
+    },
+    {
+      id: "RgKAFK5djSk",
+      title: "Wiz Khalifa — See You Again ft. Charlie Puth (Official Video)",
+      channel: "Wiz Khalifa",
+      views: "6.3 млрд переглядів",
+      ago: "9 років тому",
+      duration: "3:57",
+      avatar: "https://i.pravatar.cc/36?img=6"
+    },
+    {
+      id: "pRpeEdMmmQ0",
+      title: "Shakira — Waka Waka (This Time for Africa) (The Official 2010 FIFA World Cup™ Song)",
+      channel: "Shakira",
+      views: "3.8 млрд переглядів",
+      ago: "13 років тому",
+      duration: "3:35",
+      avatar: "https://i.pravatar.cc/36?img=7"
+    },
+    {
+      id: "nfWlot6h_JM",
+      title: "Taylor Swift — Shake It Off (Official Music Video)",
+      channel: "Taylor Swift",
+      views: "3.8 млрд переглядів",
+      ago: "9 років тому",
+      duration: "3:39",
+      avatar: "https://i.pravatar.cc/36?img=8"
+    },
+    {
+      id: "YqeW9_5kURI",
+      title: "Justin Bieber — Baby ft. Ludacris (Official Music Video)",
+      channel: "Justin Bieber",
+      views: "2.8 млрд переглядів",
+      ago: "13 років тому",
+      duration: "3:47",
+      avatar: "https://i.pravatar.cc/36?img=9"
+    }
+  ];
+
+  /* ── Render ── */
+  function renderGrid(list) {
+    const grid = document.getElementById('video-grid');
+    grid.innerHTML = list.map(v => `
+      <div class="video-card">
+        <div class="thumb-wrap" id="wrap-${v.id}" onclick="playVideo('${v.id}')">
+          <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy"/>
+          <iframe id="iframe-${v.id}"
+            src=""
+            data-src="https://www.youtube.com/embed/${v.id}?autoplay=1&rel=0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+          <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+          <span class="duration">${v.duration}</span>
+        </div>
+        <div class="video-info">
+          <img class="channel-avatar" src="${v.avatar}" alt="${v.channel}"/>
+          <div class="video-meta">
+            <h3>${v.title}</h3>
+            <p>${v.channel}</p>
+            <p>${v.views} · ${v.ago}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  /* ── Play / Stop ── */
+  let currentPlaying = null;
+
+  function playVideo(id) {
+    if (currentPlaying && currentPlaying !== id) {
+      stopVideo(currentPlaying);
+    }
+    const wrap = document.getElementById('wrap-' + id);
+    const iframe = document.getElementById('iframe-' + id);
+    if (wrap.classList.contains('playing')) {
+      stopVideo(id);
+      return;
+    }
+    iframe.src = iframe.dataset.src;
+    wrap.classList.add('playing');
+    currentPlaying = id;
+  }
+
+  function stopVideo(id) {
+    const wrap = document.getElementById('wrap-' + id);
+    const iframe = document.getElementById('iframe-' + id);
+    iframe.src = '';
+    wrap.classList.remove('playing');
+    if (currentPlaying === id) currentPlaying = null;
+  }
+
+  /* ── Chips ── */
+  function setChip(el) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  /* ── Search ── */
+  function doSearch() {
+    const q = document.getElementById('search-input').value.trim().toLowerCase();
+    if (!q) { renderGrid(videos); return; }
+    const filtered = videos.filter(v =>
+      v.title.toLowerCase().includes(q) ||
+      v.channel.toLowerCase().includes(q)
+    );
+    renderGrid(filtered.length ? filtered : videos);
+  }
+
+  /* ── Init ── */
+  renderGrid(videos);
+</script>
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HolidayTime</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1e2a3a;
+      --navy2:   #2c3e55;
+      --accent:  #3a5068;
+      --lavender:#c5c5d5;
+      --bg:      #e2e2e2;
+      --bgcard:  #d4d4d4;
+      --white:   #ffffff;
+      --text:    #1a1a2e;
+      --muted:   #55556a;
+      --r:       6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      height: 54px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 5px 14px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo svg { width: 38px; height: 24px; }
+
+    .nav {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+      justify-content: center;
+      height: 54px;
+    }
+    .nav a {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.74rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.18s;
+      line-height: 1.25;
+    }
+    .nav a:first-child { border-left: 1px solid rgba(255,255,255,0.2); }
+    .nav a:hover { background: rgba(255,255,255,0.1); }
+
+    .lang {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      padding-left: 18px;
+      border-left: 1px solid rgba(255,255,255,0.25);
+    }
+    .lang svg { width: 20px; height: 20px; opacity: 0.9; }
+
+    /* ===== PAGE SYSTEM via :target ===== */
+    /*
+      All sections are hidden by default.
+      #home is shown by default (no hash needed).
+      When another section is :target, home hides.
+    */
+    .page { display: none; flex-direction: column; flex: 1; }
+
+    #home { display: flex; }
+
+    /* When any other section is targeted, show it, hide home */
+    #about:target   { display: flex; }
+    #contacts:target{ display: flex; }
+    #booking:target { display: flex; }
+    #house:target   { display: flex; }
+    #cabinet:target { display: flex; }
+    #home:target    { display: flex; }
+
+    #about:target   ~ #home { display: none; }
+    #contacts:target ~ #home { display: none; }
+    #booking:target  ~ #home { display: none; }
+    #house:target    ~ #home { display: none; }
+    #cabinet:target  ~ #home { display: none; }
+
+    /* ===== SHARED ===== */
+    .page-band {
+      background: var(--lavender);
+      padding: 22px 60px;
+      flex-shrink: 0;
+    }
+    .page-band h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.6rem;
+      color: var(--navy);
+    }
+
+    .page-content { flex: 1; }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      padding: 20px 48px;
+      flex-shrink: 0;
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 46px;
+      height: 46px;
+      background: var(--navy2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.2rem;
+      z-index: 200;
+      opacity: 0.82;
+    }
+
+    /* =====================================================
+       HOME
+    ===================================================== */
+    .home-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 60px 36px;
+      gap: 22px;
+    }
+
+    .hero {
+      width: 100%;
+      max-width: 1020px;
+      min-height: 196px;
+      border-radius: var(--r);
+      background:
+        linear-gradient(rgba(30,42,58,.52), rgba(30,42,58,.44)),
+        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 32px;
+    }
+    .hero h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2.1rem; margin-bottom: 8px; }
+    .hero p  { font-size: 1rem; font-weight: 600; }
+
+    /* Slider card */
+    .slider {
+      width: 100%;
+      max-width: 1020px;
+      background: var(--bgcard);
+      border-radius: var(--r);
+      overflow: hidden;
+      position: relative;
+    }
+    .slider-img {
+      width: 100%;
+      height: 308px;
+      object-fit: cover;
+      display: block;
+    }
+    .slider-arrow {
+      position: absolute;
+      right: 14px;
+      top: calc(50% - 74px);
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--navy);
+    }
+    .slider-cta {
+      position: absolute;
+      right: 76px;
+      top: calc(50% - 54px);
+      background: var(--navy2);
+      color: var(--white);
+      padding: 9px 18px;
+      border-radius: 28px;
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+    .slider-info {
+      padding: 12px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .slider-info p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+    .dots { display: flex; align-items: center; gap: 5px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #999; background: transparent; }
+    .dot.white { background: var(--white);  border-color: var(--white); }
+    .dot.green { background: #4a8060;       border-color: #4a8060; }
+    .dot.dark  { background: #2c3e55;       border-color: #2c3e55; }
+
+    /* Promo strip */
+    .promo {
+      width: 100%;
+      max-width: 1020px;
+      background: var(--bgcard);
+      border-radius: var(--r);
+      display: flex;
+      overflow: hidden;
+      min-height: 192px;
+    }
+    .promo img { width: 44%; object-fit: cover; flex-shrink: 0; }
+    .promo-text {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 32px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.04rem;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Feedback */
+    .feedback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .feedback h2 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.35rem; margin-bottom: 18px; }
+    .form-box { width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 14px; }
+    .f-group { display: flex; flex-direction: column; gap: 4px; }
+    .f-group label { font-size: 0.88rem; font-weight: 600; }
+    .f-group input {
+      border: 1.5px solid #b0b8c8;
+      border-radius: var(--r);
+      padding: 9px 13px;
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--muted);
+      outline: none;
+      font-family: 'Nunito', sans-serif;
+    }
+    .f-group input:focus { border-color: var(--accent); }
+    .btn-primary {
+      background: var(--navy2);
+      color: var(--white);
+      border: none;
+      border-radius: var(--r);
+      padding: 12px;
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+    .about-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 60px 48px;
+      gap: 20px;
+    }
+    .about-banner {
+      width: 100%;
+      max-width: 1020px;
+      min-height: 118px;
+      border-radius: var(--r);
+      background:
+        linear-gradient(rgba(30,42,58,.52), rgba(30,42,58,.52)),
+        url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 28px 48px;
+    }
+    .about-banner h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.75rem; margin-bottom: 8px; }
+    .about-banner p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.97rem; line-height: 1.55; }
+    .about-card {
+      width: 100%;
+      max-width: 1020px;
+      background: var(--bgcard);
+      border-radius: var(--r);
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+
+    /* =====================================================
+       CONTACTS
+    ===================================================== */
+    .contacts-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 60px 48px;
+      gap: 24px;
+    }
+    .contacts-info {
+      background: var(--bgcard);
+      border-radius: var(--r);
+      padding: 32px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px 60px;
+    }
+    .c-col { display: flex; flex-direction: column; gap: 6px; }
+    .c-col h3 {
+      font-weight: 700;
+      font-size: 0.97rem;
+      border-bottom: 1.5px solid var(--text);
+      padding-bottom: 5px;
+      margin-bottom: 2px;
+    }
+    .c-col p { font-size: 0.93rem; line-height: 1.6; }
+    .contacts-bottom { display: flex; gap: 48px; align-items: flex-start; }
+    .addr-col { display: flex; flex-direction: column; gap: 8px; }
+    .addr-col h3 { font-weight: 700; font-size: 0.97rem; border-bottom: 1.5px solid var(--text); padding-bottom: 5px; }
+    .addr-col p { font-size: 0.93rem; }
+    .map-box { flex: 1; min-height: 200px; border-radius: 10px; overflow: hidden; border: 1px solid #bbb; }
+    .map-box iframe { width: 100%; height: 220px; border: none; display: block; }
+
+    /* =====================================================
+       BOOKING
+    ===================================================== */
+    .booking-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 60px 48px;
+      gap: 20px;
+    }
+
+    /* Pure CSS dropdown via hidden checkbox */
+    .dd-wrap { position: relative; }
+    .dd-check { display: none; }
+    .dd-label {
+      background: var(--bgcard);
+      border-radius: var(--r);
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+    .arrow { display: inline-block; transition: transform 0.2s; }
+    .dd-list {
+      display: none;
+      background: var(--bgcard);
+      border-radius: 0 0 var(--r) var(--r);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      position: absolute;
+      left: 0; right: 0;
+      z-index: 10;
+    }
+    .dd-check:checked ~ .dd-list { display: block; }
+    .dd-check:checked ~ .dd-label .arrow { transform: rotate(180deg); }
+    .dd-list a {
+      display: block;
+      padding: 13px 22px;
+      border-bottom: 1px solid #c4c4c4;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.93rem;
+      transition: background 0.15s;
+    }
+    .dd-list a:last-child { border-bottom: none; }
+    .dd-list a:hover { background: #c8c8d0; }
+
+    .cabins-list { display: flex; flex-direction: column; gap: 18px; }
+    .cabin-card { background: var(--bgcard); border-radius: var(--r); display: flex; overflow: hidden; }
+    .cabin-card img { width: 272px; object-fit: cover; flex-shrink: 0; }
+    .cabin-body { flex: 1; padding: 18px 24px; display: flex; flex-direction: column; gap: 8px; position: relative; }
+    .cabin-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.14rem;
+      font-weight: 400;
+      border-bottom: 1px solid #bbb;
+      padding-bottom: 7px;
+    }
+    .cabin-body p { font-size: 0.86rem; line-height: 1.6; color: var(--muted); text-align: center; flex: 1; }
+    .cabin-footer { display: flex; justify-content: flex-end; margin-top: 4px; }
+    .btn-detail {
+      background: var(--navy2);
+      color: var(--white);
+      border-radius: var(--r);
+      padding: 9px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .star { position: absolute; top: 14px; right: 14px; font-size: 1.3rem; color: var(--navy); opacity: 0.35; }
+
+    /* =====================================================
+       HOUSE DETAIL
+    ===================================================== */
+    .house-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 0 60px 48px;
+      gap: 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy2);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 7px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin: 22px 0 16px;
+      align-self: flex-start;
+    }
+
+    .house-top {
+      display: flex;
+      gap: 4px;
+      height: 350px;
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .house-imgs { display: flex; flex-direction: column; gap: 4px; width: 44%; flex-shrink: 0; }
+    .house-imgs img { flex: 1; width: 100%; object-fit: cover; }
+    .house-desc {
+      flex: 1;
+      background: var(--bgcard);
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    .house-photos3 { display: flex; gap: 4px; height: 184px; margin-bottom: 22px; }
+    .house-photos3 img { flex: 1; object-fit: cover; }
+
+    .avail-section { display: flex; flex-direction: column; gap: 14px; }
+    .avail-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      text-align: center;
+    }
+    .avail-card {
+      background: var(--bgcard);
+      border-radius: var(--r);
+      padding: 22px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .avail-card > p { font-size: 0.93rem; }
+    .avail-row { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+    .avail-field { display: flex; flex-direction: column; gap: 4px; }
+    .avail-field label { font-size: 0.82rem; font-weight: 700; }
+    .fake-date {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1px solid #bbb;
+      border-radius: var(--r);
+      padding: 8px 12px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--muted);
+      min-width: 160px;
+      font-size: 0.88rem;
+    }
+    .fake-date input[type=date] {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      outline: none;
+      flex: 1;
+    }
+    .btn-check {
+      margin-left: auto;
+      background: var(--navy2);
+      color: var(--white);
+      border-radius: var(--r);
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .counter-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .counter-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 700; }
+    .num-input {
+      background: var(--white);
+      border: 1px solid #bbb;
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .num-input input[type=number] {
+      width: 52px;
+      text-align: center;
+      border: none;
+      padding: 6px 4px;
+      font-size: 0.93rem;
+      font-family: 'Nunito', sans-serif;
+      -moz-appearance: textfield;
+    }
+    .num-input input[type=number]::-webkit-inner-spin-button,
+    .num-input input[type=number]::-webkit-outer-spin-button { opacity: 1; }
+
+    .rooms-table { border-radius: var(--r); overflow: hidden; margin-top: 8px; }
+    .rt-head { background: var(--navy); display: flex; }
+    .rt-head div, .rt-row div { padding: 12px 18px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.92rem; }
+    .rt-head div { color: var(--white); }
+    .col-w { width: 128px; text-align: center; flex-shrink: 0; }
+    .col-t { flex: 1; }
+    .col-p { width: 168px; text-align: center; flex-shrink: 0; }
+    .rt-row { background: var(--bgcard); display: flex; align-items: center; border-top: 1px solid #bbb; }
+    .rt-row .col-w { display: flex; justify-content: center; align-items: center; gap: 3px; font-size: 1.3rem; }
+    .rt-row .col-t { display: flex; flex-direction: column; gap: 4px; }
+    .room-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.98rem; }
+    .room-desc { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 7px; }
+    .btn-price {
+      background: var(--accent);
+      color: var(--white);
+      border-radius: var(--r);
+      padding: 7px 16px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    /* =====================================================
+       CABINET
+    ===================================================== */
+    .cabinet-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 60px 48px;
+      gap: 24px;
+    }
+    .cab-card {
+      width: 100%;
+      max-width: 860px;
+      background: var(--bgcard);
+      border-radius: var(--r);
+      display: flex;
+      overflow: hidden;
+    }
+    .cab-left {
+      width: 198px;
+      flex-shrink: 0;
+      background: #c8c8d2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 28px 16px;
+    }
+    .avatar {
+      width: 94px; height: 94px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar svg { width: 50px; height: 50px; color: var(--navy); opacity: 0.7; }
+    .btn-av { background: var(--accent); color: var(--white); border-radius: 28px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    .btn-set { background: var(--navy); color: var(--white); border-radius: 28px; padding: 6px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+    .cab-right { flex: 1; padding: 28px 36px; display: flex; flex-direction: column; justify-content: center; }
+    .u-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.14rem;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #aaa;
+      margin-bottom: 4px;
+    }
+    .u-field {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      padding: 10px 0;
+      border-bottom: 1px solid #aaa;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.93rem;
+    }
+    .u-field strong { font-weight: 700; }
+    .btn-logout {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 11px 56px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<script src="../../../js/back_script.js"></script>
+    <script>
+    BackButtonCreation();
+    </script>
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="logo">
+    <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="4,28 16,6 24,18 32,4 40,28" fill="none" stroke="#1e2a3a" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <nav class="nav">
+    <a href="#home">Головна</a>
+    <a href="#about">Про нас</a>
+    <a href="#booking">Забронювати</a>
+    <a href="#contacts">Контакти</a>
+    <a href="#cabinet">Особистий<br>кабінет</a>
+  </nav>
+  <div class="lang">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <ellipse cx="12" cy="12" rx="4" ry="10"/>
+      <line x1="2" y1="12" x2="22" y2="12"/>
+    </svg>
+    UA
+  </div>
+</header>
+
+<!-- =====================================================
+     ABOUT (must come before HOME for sibling selector)
+===================================================== -->
+<section id="about" class="page">
+  <div class="page-band"><h1>Про нас</h1></div>
+  <div class="page-content">
+    <div class="about-inner">
+      <div class="about-banner">
+        <h2>HolidayTime</h2>
+        <p>Відпочинок, емоції, враження, нетипові маршрути, неймовірні локації —<br>
+        це все про сільський еко-туризм в Україні</p>
+      </div>
+      <div class="about-card">
+        <p>Наша команда зібрала найколоритніші місця нашої країни саме для тебе.</p>
+        <p>Місія нашої компанії подарувати незабутні враження та показати Україну з іншої сторони. Пройти разом з Вами лісовими стежками, щоб попоїсти свіжого карпатського сиру. Пірнути у каньйон та побачити занурене під товщу років село Бакота. Покататись на гандолах в "українській Венеції".</p>
+        <p>Пізнати Україну разом!</p>
+      </div>
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- =====================================================
+     CONTACTS
+===================================================== -->
+<section id="contacts" class="page">
+  <div class="page-band"><h1>Контакти</h1></div>
+  <div class="page-content">
+    <div class="contacts-inner">
+      <div class="contacts-info">
+        <div class="c-col">
+          <h3>Телефон</h3>
+          <p>+38(097)119-89-83</p>
+        </div>
+        <div class="c-col">
+          <h3>Графік роботи</h3>
+          <p>пн-пт 08:00-22:00</p>
+          <p>сб 09:00-21:00</p>
+          <p>вс 10:00-20:00</p>
+        </div>
+        <div class="c-col">
+          <h3>Ел. пошта</h3>
+          <p>hello@gmail.com</p>
+        </div>
+      </div>
+      <div class="contacts-bottom">
+        <div class="addr-col">
+          <h3>Адреса офісу</h3>
+          <p>м. Київ, вул. Малевича, буд. 4</p>
+        </div>
+        <div class="map-box">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=30.45,50.40,30.60,50.52&layer=mapnik&marker=50.459,30.523"
+            allowfullscreen loading="lazy" title="Карта офісу"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- =====================================================
+     BOOKING
+===================================================== -->
+<section id="booking" class="page">
+  <div class="page-band"><h1>Забронювати будиночок</h1></div>
+  <div class="page-content">
+    <div class="booking-inner">
+
+      <!-- CSS-only dropdown -->
+      <div class="dd-wrap">
+        <input type="checkbox" id="dd" class="dd-check" />
+        <label for="dd" class="dd-label">
+          Оберіть місцерозташування <span class="arrow">▼</span>
+        </label>
+        <div class="dd-list">
+          <a href="#booking">Бакота</a>
+          <a href="#booking">Карпати</a>
+          <a href="#booking">Київ</a>
+          <a href="#booking">Одеська область</a>
+        </div>
+      </div>
+
+      <div class="cabins-list">
+
+        <div class="cabin-card">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=560&q=80" alt="Бакота" />
+          <div class="cabin-body">
+            <span class="star">★</span>
+            <h3>Незвідана Бакота</h3>
+            <p>У Хмельницькій області розташований загублений край — Бакота. Мальовничий каньйон з давньою
+            історією захоплює своїми просторами та незвичною атмосферою. Бджільництво, свіжий мед із польових
+            трав, дотик до природи.</p>
+            <div class="cabin-footer"><a href="#house" class="btn-detail">Детальніше</a></div>
+          </div>
+        </div>
+
+        <div class="cabin-card">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=560&q=80" alt="Карпати" />
+          <div class="cabin-body">
+            <span class="star">★</span>
+            <h3>Полонини Карпат</h3>
+            <p>Полонини Карпат, у селі Орів посеред гір розташувався затишний куточок для незабутніх вражень.
+            Справжні українські гори, власноруч сироваріння на полонині, водоспади та вікові дерева чекають на Вас.</p>
+            <div class="cabin-footer"><a href="#house" class="btn-detail">Детальніше</a></div>
+          </div>
+        </div>
+
+        <div class="cabin-card">
+          <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=560&q=80" alt="Київщина" />
+          <div class="cabin-body">
+            <span class="star">★</span>
+            <h3>Автентична Київщина</h3>
+            <p>Неподалік центра Києва розташувалось автентичне українське село на території однойменного села
+            Пирогово. Дерев'яні млини, запашний хліб, приготовлений своїми руками, українські пісні та багато
+            іншого чекає на вас вже зараз.</p>
+            <div class="cabin-footer"><a href="#house" class="btn-detail">Детальніше</a></div>
+          </div>
+        </div>
+
+        <div class="cabin-card">
+          <img src="https://images.unsplash.com/photo-1502790671504-542ad42d5189?w=560&q=80" alt="Одещина" />
+          <div class="cabin-body">
+            <span class="star">★</span>
+            <h3>Нетипова Одещина</h3>
+            <p>В Одеській області знаходиться мальовниче містечко Вилкове. Його ще називають "українською
+            Венецією". Вилкове — це містечко на воді, весь в каналах. Розташоване в місці, де зустрічаються
+            річка Дунай і Чорне море. Люди пересуваються переважно човнами.</p>
+            <div class="cabin-footer"><a href="#house" class="btn-detail">Детальніше</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- =====================================================
+     HOUSE DETAIL
+===================================================== -->
+<section id="house" class="page">
+  <div class="page-band"><h1>Бронювання будиночка в Карпатах</h1></div>
+  <div class="page-content">
+    <div class="house-inner">
+
+      <a href="#booking" class="back-link">← Назад</a>
+
+      <div class="house-top">
+        <div class="house-imgs">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Зовні" />
+          <img src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?w=700&q=80" alt="Інтер'єр" />
+        </div>
+        <div class="house-desc">
+          <p>Затишні дерев'яні будиночки, які заховались на окраїні лісу, зустрічатимуть Вас чудовим краєвидом на ранкові полонини.</p>
+          <p>Ви можете обрати кількість кімнат та місце, яке буде ідеальним для Вас. Територія, на якій базуються будиночки, підійде як і для великих компаній, яким потрібно бути поряд у декількох будинках, так і для пар, які хочуть бути на одинці.</p>
+        </div>
+      </div>
+
+      <div class="house-photos3">
+        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=400&q=80" alt="Кімната" />
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="Спальня" />
+        <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&q=80" alt="Ванна" />
+      </div>
+
+      <div class="avail-section">
+        <h2>Наявність місць</h2>
+
+        <div class="avail-card">
+          <p>Коли б Ви хотіли зупинись в помешканні Полонини Карпат?</p>
+
+          <div class="avail-row">
+            <div class="avail-field">
+              <label>Дата заїзду</label>
+              <div class="fake-date">
+                <span>📅</span>
+                <input type="date" placeholder="Дата заїзду" />
+                <span>▼</span>
+              </div>
+            </div>
+            <div class="avail-field">
+              <label>Дата виїзду</label>
+              <div class="fake-date">
+                <span>📅</span>
+                <input type="date" placeholder="Дата виїзду" />
+                <span>▼</span>
+              </div>
+            </div>
+            <div class="btn-check">Перевірити наявність<br>вільних місць</div>
+          </div>
+
+          <div class="counter-row">
+            <div class="counter-item">
+              Номери
+              <div class="num-input">
+                <input type="number" value="1" min="1" max="10" />
+              </div>
+            </div>
+            <div class="counter-item">
+              Дорослі
+              <div class="num-input">
+                <input type="number" value="2" min="1" max="20" />
+              </div>
+            </div>
+            <div class="counter-item">
+              Діти
+              <div class="num-input">
+                <input type="number" value="0" min="0" max="10" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rooms-table">
+          <div class="rt-head">
+            <div class="col-w">Вміщує</div>
+            <div class="col-t">Тип розміщення</div>
+            <div class="col-p">Ціна</div>
+          </div>
+          <div class="rt-row">
+            <div class="col-w">👤👤</div>
+            <div class="col-t">
+              <span class="room-name">Двомісний номер</span>
+              <span class="room-desc">1 широке двоспальне ліжко 🛏</span>
+            </div>
+            <div class="col-p"><div class="btn-price">Показати ціни</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- =====================================================
+     CABINET
+===================================================== -->
+<section id="cabinet" class="page">
+  <div class="page-band"><h1>Особистий кабінет</h1></div>
+  <div class="page-content">
+    <div class="cabinet-inner">
+      <div class="cab-card">
+        <div class="cab-left">
+          <div class="avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <div class="btn-av">Змінити аватар</div>
+          <div class="btn-set">Налаштування</div>
+        </div>
+        <div class="cab-right">
+          <div class="u-name">Петров Іван Іванович</div>
+          <div class="u-field"><strong>Стать:</strong> чоловіча</div>
+          <div class="u-field"><strong>Дата народження:</strong> 10. 02. 1998</div>
+          <div class="u-field"><strong>Мобільний телефон:</strong> +38(097)346-72-50</div>
+          <div class="u-field"><strong>Ел. пошта:</strong> petrov@gmail.com</div>
+        </div>
+      </div>
+      <div class="btn-logout">Вийти</div>
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- =====================================================
+     HOME (last — so sibling selectors work)
+===================================================== -->
+<section id="home" class="page">
+  <div class="page-content">
+    <div class="home-inner">
+
+      <div class="hero">
+        <h1>HolidayTime</h1>
+        <p>Автентичний відпочинок серед українського колориту!</p>
+      </div>
+
+      <div class="slider">
+        <img class="slider-img"
+             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
+             alt="Полонини Карпат" />
+        <div class="slider-arrow">›</div>
+        <a href="#booking" class="slider-cta">Переглянути &rarr;</a>
+        <div class="slider-info">
+          <p>Полонини Карпат, у селі Орів посеред гір розташувався затишний куточок для незабутніх вражень.
+          Справжні українські гори, власноруч сироваріння на полонині, водоспади та вікові дерева чекають на Вас.</p>
+          <div class="dots">
+            <div class="dot white"></div>
+            <div class="dot green"></div>
+            <div class="dot dark"></div>
+            <div class="dot dark"></div>
+            <div class="dot dark"></div>
+            <div class="dot dark"></div>
+            <div class="dot dark"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="promo">
+        <img src="https://images.unsplash.com/photo-1502003148287-a82ef80a6abc?w=600&q=80" alt="Природа" />
+        <div class="promo-text">
+          Активний відпочинок у нетипових локаціях.<br>
+          Незаймана природа та місцевий колорит<br>
+          подарують Вам незабутні враження.
+        </div>
+      </div>
+
+      <div class="feedback">
+        <h2>Зворотній зв'язок</h2>
+        <div class="form-box">
+          <div class="f-group">
+            <label>Ім'я</label>
+            <input type="text" placeholder="Введіть ім'я" />
+          </div>
+          <div class="f-group">
+            <label>Номер телефону</label>
+            <input type="tel" placeholder="Введіть номер телефону" />
+          </div>
+          <button class="btn-primary">Запросити виклик</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>© 2021 HolidayTime. All rights reserved.</footer>
+</section>
+
+<!-- Scroll to top -->
+<a href="#" class="scroll-top" aria-label="Вгору">↑</a>
+
+</body>
+</html>
