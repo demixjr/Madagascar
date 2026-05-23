@@ -9,7 +9,11 @@ header{
 header nav{
     display: flex;
 }
-
+/*main page*/
+.card-body img{
+    width: 500px;
+    height: 200px;
+}
 /*individual lab pages*/
 .back-link{
     position: absolute;
