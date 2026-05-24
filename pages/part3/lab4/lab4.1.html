@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мої улюблені речі - Лабораторна робота</title>
     <style>
+        :root {
+            --ul-color: lightblue;
+            --ol-color: lightgreen;
+            --dl-color: yellow;
+        }
+
         body {
             font-family: sans-serif;
             min-height: 100vh;
@@ -22,12 +29,12 @@
 
         /* Кожний другий елемент */
         .games-list li:nth-child(even) {
-            background-color: lightblue;
+            background-color: var(--ul-color);
         }
 
         /* Кожен третій, починаючи з другого */
         .movies-list li:nth-child(3n+2) {
-            background-color: lightgreen;
+            background-color: var(--ol-color);
         }
 
         /* Базовий відступ для всіх предметів, щоб текст не злипався */
@@ -38,45 +45,59 @@
         /* Перший та останній елементи */
         .subjects-list li:first-child,
         .subjects-list li:last-child {
-            background-color: yellow;
+            background-color: var(--dl-color);
         }
     </style>
 </head>
+
 <body>
     <script src="../../../js/back_script.js"></script>
     <script>
-    BackButtonCreation();
+        BackButtonCreation();
     </script>
-<div class="container">
-    <h1>Мої списки улюбленого</h1>
+    <div class="container">
+        <h1>Мої списки улюбленого</h1>
 
-    <h2>Улюблені ігри</h2>
-    <ul class="games-list">
-        <li>Resident Evil</li>
-        <li>Terraria</li>
-        <li>Minecraft</li>
-        <li>Відьмак 3: Дикий Гін</li>
-        <li>Stardew Valley</li>
-    </ul>
+        <h2>Улюблені ігри</h2>
+        <input type="color" id="ulColor" value=lightblue>
+        <button id="ulBtn">Змінити колір</button>
+        <ul class="games-list">
+            <li>Resident Evil</li>
+            <li>Terraria</li>
+            <li>Minecraft</li>
+            <li>Відьмак 3: Дикий Гін</li>
+            <li>Stardew Valley</li>
+        </ul>
 
-    <h2>Улюблені фільми</h2>
-    <ol class="movies-list">
-        <li>Сутінки</li>
-        <li>До зустрічі з тобою</li>
-        <li>Веном</li>
-        <li>Інтерстеллар</li>
-        <li>Початок (Inception)</li>
-        <li>Матриця</li>
-        <li>Дюна</li>
-        <li>Володар перснів</li>
-        <li>Аватар</li>
-        <li>Дедпул</li>
-    </ol>
+        <h2>Улюблені фільми</h2>
+        <input type="color" id="olColor" value=lightgreen>
+        <button id="olBtn">Змінити колір</button>
+        <ol class="movies-list">
+            <li>Сутінки</li>
+            <li>До зустрічі з тобою</li>
+            <li>Веном</li>
+            <li>Інтерстеллар</li>
+            <li>Початок (Inception)</li>
+            <li>Матриця</li>
+            <li>Дюна</li>
+            <li>Володар перснів</li>
+            <li>Аватар</li>
+            <li>Дедпул</li>
+        </ol>
 
-    <h2>Улюблені предмети</h2>
-    <ul class="subjects-list">
-        <li><strong>Програмування для Інтернет:</strong> Вивчення сучасних веб-технологій, створення сайтів та розуміння клієнт-серверної архітектури.</li> <li><strong>UI/UX дизайн:</strong> Створення зручних, логічних та візуально привабливих інтерфейсів для користувачів.</li>
-        <li><strong>Моделювання та аналіз програмного забезпечення:</strong> Проектування архітектури систем, створення UML діаграм та детальний аналіз вимог.</li> </ul>
-</div>
+        <h2>Улюблені предмети</h2>
+        <input type="color" id="dlColor" value=yellow>
+        <button id="dlBtn">Змінити колір</button>
+        <ul class="subjects-list">
+            <li><strong>Програмування для Інтернет:</strong> Вивчення сучасних веб-технологій, створення сайтів та
+                розуміння клієнт-серверної архітектури.</li>
+            <li><strong>UI/UX дизайн:</strong> Створення зручних, логічних та візуально привабливих інтерфейсів для
+                користувачів.</li>
+            <li><strong>Моделювання та аналіз програмного забезпечення:</strong> Проектування архітектури систем,
+                створення UML діаграм та детальний аналіз вимог.</li>
+        </ul>
+    </div>
+    <script src="/js/lab4.1.js"></script>
 </body>
+
 </html>

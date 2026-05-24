@@ -6,17 +6,23 @@
     <title>Мої Улюблені</title>
 
     <style>
+        :root {
+            --ol-color: #ff4848;
+            --ul-color: #4caf50;
+            --dl-color: #2196f3;
+        }
+
         ol li:nth-child(2n) {
-            background-color: #ff4848;
+            background-color: var(--ol-color);
         }
 
         ul li:nth-child(3n+2) {
-            background-color: #4caf50;
+            background-color: var(--ul-color);
         }
 
         dt:first-child,
         dd:last-child {
-            background-color: #2196f3;
+            background-color: var(--dl-color);
         }
     </style>
 </head>
@@ -24,10 +30,11 @@
 <body>
     <script src="../../../js/back_script.js"></script>
     <script>
-    BackButtonCreation();
+        BackButtonCreation();
     </script>
     <h1>Мої Улюблені речі</h1>
-
+    <input type="color" id="olColor" value="#ff4848">
+    <button id="olBtn">Змінити колір</button>
     <h2>Улюблені ігри</h2>
     <ol>
         <li>The Witcher 3: Wild Hunt</li>
@@ -39,6 +46,8 @@
     </ol>
 
     <h2>Улюблені фільми, серіали та аніме</h2>
+    <input type="color" id="ulColor" value="#4caf50">
+    <button id="ulBtn">Змінити колір</button>
     <ul>
         <li>Breaking Bad</li>
         <li>The Shawshank Redemption</li>
@@ -54,6 +63,8 @@
     </ul>
 
     <h2>Улюблені предмети та їх опис</h2>
+    <input type="color" id="dlColor" value="#2196f3">
+    <button id="dlBtn">Змінити колір</button>
     <dl>
         <dt>Навушники Sony WH-1000XM5</dt>
         <dd>Бездротові навушники з активним шумаком та довгою автономністю (40+ годин).</dd>
@@ -67,6 +78,7 @@
         <dt>Навушники Sony WH-1000XM5</dt>
         <dd>Бездротові навушники з активним шумаком та довгою автономністю (40+ годин).</dd>
     </dl>
+    <script src="/js/lab4.1.js"></script>
 </body>
 
 </html>

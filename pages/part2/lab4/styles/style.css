@@ -1,22 +1,23 @@
-body{
-    color: rgb(96,96,96);
+:root {
+    --ul-color: red;
+    --ol-color: blue;
+    --dl-color: green;
 }
 
-ul li:nth-child(2n){
-    color:red;
+body {
+    color: rgb(96, 96, 96);
 }
 
-ol li:nth-child(3n+2){
-    color:blue;
+ul li:nth-child(2n) {
+    color: var(--ul-color);
 }
 
-dl dt:first-child{
-    color:rgb(255,255,0);
+ol li:nth-child(3n+2) {
+    color: var(--ol-color);
 }
 
-dl dt:nth-last-child(2){
-    color:orange;
-}
-dl dd:last-child{
-    color:green;
+dl dt:first-child,
+dl dt:nth-last-child(2),
+dl dd:last-child {
+    color: var(--dl-color);
 }

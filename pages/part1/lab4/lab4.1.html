@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <title>Завдання 1 — Списки</title>
   <style>
+    :root {
+      --ul-color: #c0392b;
+      --ol-color: #aed6f1;
+      --dl-color: #1a8c3a;
+    }
+
     body {
       font-family: Georgia, serif;
       max-width: 700px;
@@ -20,7 +27,7 @@
 
     /* ======= СПИСОК 1: ul  кожний другий li червоний ======= */
     ul li:nth-child(even) {
-      color: #c0392b;
+      color: var(--ul-color);
     }
 
     ul {
@@ -29,7 +36,7 @@
 
     /* ======= СПИСОК 2: ol  кожен третій починаючи з другого (2,5,8,11) ======= */
     ol li:nth-child(3n+2) {
-      background-color: #aed6f1;
+      background-color: var(--ol-color);
     }
 
     ol {
@@ -38,14 +45,12 @@
 
     /* ======= СПИСОК 3: dl  перший dt/dd зелений, останній фіолетовий ======= */
     dt:first-of-type,
-    dd:first-of-type {
-      color: #1a8c3a;
-    }
-
+    dd:first-of-type,
     dt:last-of-type,
     dd:last-of-type {
-      color: #8e44ad;
+      color: var(--dl-color);
     }
+
 
     dt {
       font-weight: bold;
@@ -58,12 +63,15 @@
     }
   </style>
 </head>
+
 <body>
-<script src="../../../js/back_script.js"></script>
-    <script>
+  <script src="../../../js/back_script.js"></script>
+  <script>
     BackButtonCreation();
-    </script>
+  </script>
   <h2>Мої улюблені ігри</h2>
+  <input type="color" id="ulColor" value="#c0392b">
+  <button id="ulBtn">Змінити колір</button>
   <ul>
     <li>The Witcher 3</li>
     <li>Minecraft</li>
@@ -75,6 +83,8 @@
   </ul>
 
   <h2>Мої улюблені фільми та серіали</h2>
+  <input type="color" id="olColor" value="#aed6f1">
+  <button id="olBtn">Змінити колір</button>
   <ol>
     <li>Інтерстеллар</li>
     <li>Темний лицар</li>
@@ -90,6 +100,8 @@
   </ol>
 
   <h2>Мої улюблені предмети</h2>
+  <input type="color" id="dlColor" value="#1a8c3a">
+  <button id="dlBtn">Змінити колір</button>
   <dl>
     <dt>Навушники AirPods</dt>
     <dd>Apple AirPods — зручні, бездротові, ідеальні для музики та дзвінків</dd>
@@ -101,5 +113,7 @@
     <dd>Конструктор LEGO — цікаво збирати, розвиває уяву та посидючість</dd>
   </dl>
 
+  <script src="/js/lab4.1.js"></script>
 </body>
+
 </html>
