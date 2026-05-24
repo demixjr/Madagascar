@@ -62,14 +62,6 @@ header {
     -webkit-backdrop-filter: blur(12px);
 }
 
-.logo {
-    width: 36px;
-    height: 36px;
-    background: var(--accent);
-    border-radius: var(--radius-sm);
-    flex-shrink: 0;
-}
-
 /* Penguin GIF — keep it small and inline */
 .tenor-gif-embed {
     height: 44px !important;
