@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <title>Червень 2026</title>
@@ -51,126 +52,25 @@
     }
 
     /* Субота (7) і Неділя (8)  зелений */
-    tbody td:nth-child(7),
-    tbody td:nth-child(8) {
+    tbody td:nth-child(6),
+    tbody td:nth-child(7) {
       color: green;
     }
-
-    /* 31 травня — перший рядок, 2-га клітинка  сірий */
-    tbody tr:first-child td:nth-child(2) {
-      color: #aaaaaa;
-    }
-
-    /* 1 червня (свято) — перший рядок, 3-тя клітинка  червоний */
-    tbody tr:first-child td:nth-child(3) {
-      color: red;
-    }
-
-    /* 15 червня (день народження) — 3-й рядок, 3-тя клітинка  помаранчевий */
-    tbody tr:nth-child(3) td:nth-child(3) {
-      color: orange;
-    }
-
-    /* 28 червня (День Конституції) — 5-й рядок, 2-га клітинка  червоний */
-    tbody tr:nth-child(5) td:nth-child(2) {
-      color: red;
-    }
-
-    /* 1,2,3,4,5 липня — 5-й рядок, клітинки 4-8  сірий */
-    tbody tr:nth-child(5) td:nth-child(4),
-    tbody tr:nth-child(5) td:nth-child(5),
-    tbody tr:nth-child(5) td:nth-child(6),
-    tbody tr:nth-child(5) td:nth-child(7),
-    tbody tr:nth-child(5) td:nth-child(8) {
-      color: #aaaaaa;
-    }
-
   </style>
 </head>
+
 <body>
-<script src="../../../js/back_script.js"></script>
-    <script>
+  <script src="../../../js/back_script.js"></script>
+  <script>
     BackButtonCreation();
-    </script>
-<h1>Червень 2026</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>No.</th>
-      <th>Пн</th>
-      <th>Вт</th>
-      <th>Ср</th>
-      <th>Чт</th>
-      <th>Пт</th>
-      <th>Сб</th>
-      <th>Нд</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <!-- Тиждень 1 -->
-    <tr>
-      <td>1</td>
-      <td>31</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-
-    <!-- Тиждень 2 -->
-    <tr>
-      <td>2</td>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
-      <td>12</td>
-      <td>13</td>
-    </tr>
-
-    <!-- Тиждень 3 -->
-    <tr>
-      <td>3</td>
-      <td>14</td>
-      <td>15</td>
-      <td>16</td>
-      <td>17</td>
-      <td>18</td>
-      <td>19</td>
-      <td>20</td>
-    </tr>
-
-    <!-- Тиждень 4 -->
-    <tr>
-      <td>4</td>
-      <td>21</td>
-      <td>22</td>
-      <td>23</td>
-      <td>24</td>
-      <td>25</td>
-      <td>26</td>
-      <td>27</td>
-    </tr>
-
-    <!-- Тиждень 5 -->
-    <tr>
-      <td>5</td>
-      <td>28</td>
-      <td>29</td>
-      <td>30</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-
-  </tbody>
-</table>
-
+  </script>
+  <h1 id="month-year-title">Червень 2026</h1>
+  <div id="calendar-container"></div>
+  <nav>
+    <button id="prev-btn">Попередній місяць</button>
+    <button id="next-btn">Наступний місяць</button>
+  </nav>
+  <script src="../../../js/lab4.2.js"></script>
 </body>
+
 </html>
